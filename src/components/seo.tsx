@@ -6,11 +6,18 @@
  */
 
 import React from "react"
-import PropTypes from "prop-types"
+import PropTypes, { string } from "prop-types"
 import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
-function SEO({ description, lang, meta, title }) {
+interface IProps {
+  description?: string
+  lang?: string
+  meta?: any
+  title: string
+}
+
+function SEO({ description, lang, meta, title }: IProps) {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -26,6 +33,8 @@ function SEO({ description, lang, meta, title }) {
   )
 
   const metaDescription = description || site.siteMetadata.description
+  title = site.siteMetadata.title
+  meta = meta ? meta : []
 
   return (
     <Helmet
@@ -36,38 +45,62 @@ function SEO({ description, lang, meta, title }) {
       titleTemplate={`%s | ${site.siteMetadata.title}`}
       meta={[
         {
-          name: `description`,
+          name: "description",
           content: metaDescription,
         },
         {
-          property: `og:title`,
+          property: "og:title",
           content: title,
         },
         {
-          property: `og:description`,
+          property: "og:description",
           content: metaDescription,
         },
         {
-          property: `og:type`,
-          content: `website`,
+          property: "og:type",
+          content: "website",
         },
         {
-          name: `twitter:card`,
-          content: `summary`,
+          name: "twitter:card",
+          content: "summary",
         },
         {
-          name: `twitter:creator`,
+          name: "twitter:creator",
           content: site.siteMetadata.author,
         },
         {
-          name: `twitter:title`,
+          name: "twitter:title",
           content: title,
         },
         {
-          name: `twitter:description`,
+          name: "twitter:description",
           content: metaDescription,
         },
       ].concat(meta)}
+      link={[
+        {
+          rel: "stylesheet",
+          href: "https://fonts.googleapis.com/css?family=Staatliches",
+        },
+        {
+          rel: "stylesheet",
+          href:
+            "https://cdn.jsdelivr.net/npm/uikit@3.2.3/dist/css/uikit.min.css",
+        },
+      ]}
+      script={[
+        {
+          src:
+            "https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/js/uikit.min.js",
+        },
+        {
+          src:
+            "https://cdn.jsdelivr.net/npm/uikit@3.2.3/dist/js/uikit-icons.min.js",
+        },
+        {
+          src: "https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/js/uikit.js",
+        },
+      ]}
     />
   )
 }
