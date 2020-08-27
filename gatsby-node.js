@@ -57,3 +57,30 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 }
+
+const crypto = require(`crypto`);
+
+const digest = data => {
+  return crypto
+    .createHash(`md5`)
+    .update(JSON.stringify(data))
+    .digest(`hex`);
+};
+
+exports.onCreateNode = ({ node, boundActionCreators }) => {
+  const { createNode } = boundActionCreators;
+  if (node.internal.type === "StrapiArticle") {
+    createNode({
+      ...node,
+      id: node.id + "-markdown",
+      parent: node.id,
+      children: [],
+      internal: {
+        type: "Article",
+        mediaType: "text/markdown",
+        content: node.content,
+        contentDigest: digest(node)
+      }
+    });
+  }
+};

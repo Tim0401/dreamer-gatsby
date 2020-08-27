@@ -11,7 +11,7 @@ const IndexPage = () => (
         <StaticQuery
             query={graphql`
         query {
-          allStrapiArticle {
+          allArticle {
             edges {
               node {
                 strapiId
@@ -22,6 +22,9 @@ const IndexPage = () => (
                 image {
                   publicURL
                 }
+                childMarkdownRemark {
+                  html
+                }
               }
             }
           }
@@ -31,7 +34,7 @@ const IndexPage = () => (
                 <div className="uk-section">
                     <div className="uk-container uk-container-large">
                         <h1>Dreamer</h1>
-                        <ArticlesComponent articles={data.allStrapiArticle.edges} />
+                        <ArticlesComponent articles={data.allArticle.edges} />
                     </div>
                 </div>
             )}

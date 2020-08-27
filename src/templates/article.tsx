@@ -8,7 +8,7 @@ import Layout from "../components/layout"
 import { QueryStrapiArticleArgs, StrapiArticle } from "../../types/graphql-types"
 
 interface IBProps{
-  strapiArticle: StrapiArticle
+  article: StrapiArticle
 }
 
 interface IProps {
@@ -17,10 +17,14 @@ interface IProps {
 
 export const query = graphql`
   query ArticleQuery($id: String!) {
-    strapiArticle(strapiId: { eq: $id }) {
+    article(strapiId: { eq: $id }) {
       strapiId
       title
       content
+      childMarkdownRemark {
+        html
+        excerpt
+      }
       published_at
       image {
         publicURL
@@ -30,7 +34,7 @@ export const query = graphql`
 `
 
 const Article = ({ data }:IProps) => {
-  const article = data.strapiArticle
+  const article = data.article
   return (
     <Layout>
       <div>
@@ -46,7 +50,7 @@ const Article = ({ data }:IProps) => {
 
         <div className="uk-section">
           <div className="uk-container uk-container-small">
-            <ReactMarkdown source={article.content ? article.content : ""} />
+            <div dangerouslySetInnerHTML={{ __html: article.childMarkdownRemark.html }} />
             <p>
               <Moment format="MMM Do YYYY">{article.published_at}</Moment>
             </p>
