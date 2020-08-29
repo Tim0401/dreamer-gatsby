@@ -19,11 +19,6 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: '12.x'
-    
-    - name: Dotenv Action
-      uses: falti/dotenv-action@v0.2.4
-      with:
-        path: .env.production
 
     - name: Install dependencies
       run: |
@@ -32,6 +27,6 @@ jobs:
     - name: Build Gatsby
       run: yarn build
       env:
-        API_URL: ${{ steps.dotenv.outputs.api_url }}
+        API_URL: "http://akeno.mydns.jp:8383"
     - name: Deploy Firebase
       run: yarn deploy --token=${{ secrets.FIREBASE_TOKEN }}
