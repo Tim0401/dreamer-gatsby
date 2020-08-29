@@ -84,6 +84,7 @@ module.exports = {
         },
         "gatsby-plugin-material-ui",
         "gatsby-plugin-styled-components",
+        `gatsby-plugin-sharp`,
         "gatsby-plugin-catch-links",
         `gatsby-plugin-feed`,
         'gatsby-plugin-robots-txt',
@@ -167,18 +168,10 @@ module.exports = {
                             }
                         }
                     },
-                    `gatsby-plugin-sharp`,
                     {
-                        resolve: `gatsby-transformer-remark`,
+                        resolve: `gatsby-remark-images`,
                         options: {
-                            plugins: [
-                                {
-                                    resolve: `gatsby-remark-images`,
-                                    options: {
-                                        maxWidth: 590,
-                                    },
-                                },
-                            ],
+                            maxWidth: 590,
                         },
                     },
                     {

@@ -5,7 +5,6 @@ import Layout from "../components/layout"
 import ArticlesComponent from "../components/articles"
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
-import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import SideBar from '../components/sidebar'
 import Grid from '@material-ui/core/Grid';
