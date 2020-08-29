@@ -20,10 +20,10 @@ jobs:
       with:
         node-version: '12.x'
     
-    - name: Environment Variables from Dotenv
-      uses: c-py/action-dotenv-to-setenv@v1
+    - name: Dotenv Action
+      uses: falti/dotenv-action@v0.2.4
       with:
-        env-file: .env.production
+        path: .env.production
 
     - name: Install dependencies
       run: |
@@ -31,5 +31,7 @@ jobs:
         yarn --frozen-lockfile
     - name: Build Gatsby
       run: yarn build
+      env:
+        API_URL: ${{ steps.dotenv.outputs.api_url }}
     - name: Deploy Firebase
       run: yarn deploy --token=${{ secrets.FIREBASE_TOKEN }}
