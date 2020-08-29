@@ -1,38 +1,39 @@
 import React from "react"
-import Card from "./card"
+import ArticleCard from "./card"
 import { StrapiArticleEdge } from "../../types/graphql-types"
+import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
 
 interface IProps {
-    articles: StrapiArticleEdge[];
+  articles: StrapiArticleEdge[];
 }
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      flexGrow: 1,
+    },
+    paper: {
+      padding: theme.spacing(2),
+      color: theme.palette.text.secondary,
+    },
+  }),
+);
+
 const Articles = ({ articles }: IProps) => {
-    const leftArticlesCount = Math.ceil(articles.length / 5)
-    const leftArticles = articles.slice(0, leftArticlesCount)
-    const rightArticles = articles.slice(leftArticlesCount, articles.length)
+  const classes = useStyles();
+  return (
+    <Grid container spacing={3} className={classes.root}  alignItems="stretch">
+      {articles.map((article: StrapiArticleEdge, i: Number) => {
+        return (
+          <Grid item xs={12} md={6} xl={4} style={{display: 'flex'}} key={article.node.id}>
+              <ArticleCard article={article} key={"article__${article.node.id}"} />
+          </Grid>
+        )
+      })}
+    </Grid>
 
-
-    return (
-        <div>
-            <div className="uk-child-width-1-2" data-uk-grid>
-                <div>
-                    {leftArticles.map((article: StrapiArticleEdge, i: Number) => {
-                        return (
-                            <Card article={article} key={"article__${article.node.id}"} />
-                        )
-                    })}
-                </div>
-                <div>
-                    <div className="uk-child-width-1-2@m uk-grid-match" data-uk-grid>
-                        {rightArticles.map((article: StrapiArticleEdge, i: Number) => {
-                            return (
-                                <Card article={article} key={"article__${article.node.id}"} />
-                            )
-                        })}
-                    </div>
-                </div>
-            </div>
-        </div>
-    )
+  )
 }
 
 export default Articles

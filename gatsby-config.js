@@ -10,7 +10,8 @@ $facebookAppId = ""
 module.exports = {
     siteMetadata: {
         title: $siteTitle,
-        description: "We can draw freely!",
+        description: "良いことも悪いことも吐き出してリセットするブログ。",
+        concept: "We can draw freely!",
         author: "akeno",
         siteUrl: $siteUrl,
     },
@@ -31,6 +32,7 @@ module.exports = {
                     // List of the Content Types you want to be able to request from Gatsby.
                     "article",
                     "category",
+                    "page",
                 ],
                 queryLimit: 1000,
             },
@@ -80,6 +82,8 @@ module.exports = {
                 sitemapSize: 5000
             }
         },
+        "gatsby-plugin-material-ui",
+        "gatsby-plugin-styled-components",
         "gatsby-plugin-catch-links",
         `gatsby-plugin-feed`,
         'gatsby-plugin-robots-txt',
@@ -87,8 +91,8 @@ module.exports = {
         {
             resolve: `gatsby-plugin-nprogress`,
             options: {
-              color: `#444`,
-              showSpinner: false,
+                color: `#444`,
+                showSpinner: false,
             },
         },
         {
