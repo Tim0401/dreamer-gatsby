@@ -3037,9 +3037,6 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___pluginOptions___plugins___pluginFilepath'
   | 'pluginCreator___pluginOptions___name'
   | 'pluginCreator___pluginOptions___path'
-  | 'pluginCreator___pluginOptions___apiURL'
-  | 'pluginCreator___pluginOptions___contentTypes'
-  | 'pluginCreator___pluginOptions___queryLimit'
   | 'pluginCreator___pluginOptions___fileName'
   | 'pluginCreator___pluginOptions___short_name'
   | 'pluginCreator___pluginOptions___start_url'
@@ -3083,6 +3080,9 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___pluginOptions___width'
   | 'pluginCreator___pluginOptions___height'
   | 'pluginCreator___pluginOptions___pathCheck'
+  | 'pluginCreator___pluginOptions___apiURL'
+  | 'pluginCreator___pluginOptions___contentTypes'
+  | 'pluginCreator___pluginOptions___queryLimit'
   | 'pluginCreator___nodeAPIs'
   | 'pluginCreator___browserAPIs'
   | 'pluginCreator___ssrAPIs'
@@ -3291,9 +3291,6 @@ export type SitePluginFieldsEnum =
   | 'pluginOptions___plugins___pluginFilepath'
   | 'pluginOptions___name'
   | 'pluginOptions___path'
-  | 'pluginOptions___apiURL'
-  | 'pluginOptions___contentTypes'
-  | 'pluginOptions___queryLimit'
   | 'pluginOptions___fileName'
   | 'pluginOptions___short_name'
   | 'pluginOptions___start_url'
@@ -3337,6 +3334,9 @@ export type SitePluginFieldsEnum =
   | 'pluginOptions___width'
   | 'pluginOptions___height'
   | 'pluginOptions___pathCheck'
+  | 'pluginOptions___apiURL'
+  | 'pluginOptions___contentTypes'
+  | 'pluginOptions___queryLimit'
   | 'nodeAPIs'
   | 'browserAPIs'
   | 'ssrAPIs'
@@ -3452,9 +3452,6 @@ export type SitePluginPluginOptions = {
   plugins?: Maybe<Array<Maybe<SitePluginPluginOptionsPlugins>>>;
   name?: Maybe<Scalars['String']>;
   path?: Maybe<Scalars['String']>;
-  apiURL?: Maybe<Scalars['String']>;
-  contentTypes?: Maybe<Array<Maybe<Scalars['String']>>>;
-  queryLimit?: Maybe<Scalars['Int']>;
   fileName?: Maybe<Scalars['String']>;
   short_name?: Maybe<Scalars['String']>;
   start_url?: Maybe<Scalars['String']>;
@@ -3493,15 +3490,15 @@ export type SitePluginPluginOptions = {
   width?: Maybe<Scalars['Int']>;
   height?: Maybe<Scalars['Int']>;
   pathCheck?: Maybe<Scalars['Boolean']>;
+  apiURL?: Maybe<Scalars['String']>;
+  contentTypes?: Maybe<Array<Maybe<Scalars['String']>>>;
+  queryLimit?: Maybe<Scalars['Int']>;
 };
 
 export type SitePluginPluginOptionsFilterInput = {
   plugins?: Maybe<SitePluginPluginOptionsPluginsFilterListInput>;
   name?: Maybe<StringQueryOperatorInput>;
   path?: Maybe<StringQueryOperatorInput>;
-  apiURL?: Maybe<StringQueryOperatorInput>;
-  contentTypes?: Maybe<StringQueryOperatorInput>;
-  queryLimit?: Maybe<IntQueryOperatorInput>;
   fileName?: Maybe<StringQueryOperatorInput>;
   short_name?: Maybe<StringQueryOperatorInput>;
   start_url?: Maybe<StringQueryOperatorInput>;
@@ -3540,6 +3537,9 @@ export type SitePluginPluginOptionsFilterInput = {
   width?: Maybe<IntQueryOperatorInput>;
   height?: Maybe<IntQueryOperatorInput>;
   pathCheck?: Maybe<BooleanQueryOperatorInput>;
+  apiURL?: Maybe<StringQueryOperatorInput>;
+  contentTypes?: Maybe<StringQueryOperatorInput>;
+  queryLimit?: Maybe<IntQueryOperatorInput>;
 };
 
 export type SitePluginPluginOptionsPlugins = {
@@ -4782,7 +4782,7 @@ export type CategoryQueryVariables = Exact<{
 
 
 export type CategoryQuery = { articles: { edges: Array<{ node: (
-        Pick<Article, 'strapiId' | 'title'>
+        Pick<Article, 'strapiId' | 'title' | 'published_at'>
         & { category?: Maybe<Pick<ArticleCategory, 'id' | 'name'>>, childMarkdownRemark?: Maybe<Pick<MarkdownRemark, 'html' | 'excerpt'>>, image?: Maybe<Pick<File, 'publicURL'>> }
       ) }> }, category?: Maybe<Pick<StrapiCategory, 'name'>> };
 

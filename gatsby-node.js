@@ -6,6 +6,8 @@
 
 // You can delete this file if you're not using it
 
+const { createFilePath } = require(`gatsby-source-filesystem`)
+
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
   const result = await graphql(
@@ -74,8 +76,9 @@ const digest = data => {
     .digest(`hex`);
 };
 
-exports.onCreateNode = ({ node, boundActionCreators }) => {
-  const { createNode } = boundActionCreators;
+exports.onCreateNode = ({ node, boundActionCreators, getNode }) => {
+  const { createNode, createNodeField } = boundActionCreators;
+
   if (node.internal.type === "StrapiArticle") {
     createNode({
       ...node,

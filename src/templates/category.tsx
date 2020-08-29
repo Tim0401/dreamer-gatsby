@@ -39,6 +39,7 @@ export const query = graphql`
           image {
             publicURL
           }
+          published_at
         }
       }
     }

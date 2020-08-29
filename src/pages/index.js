@@ -30,6 +30,7 @@ const IndexPage = () => (
                   html
                   excerpt(truncate: true)
                 }
+                published_at
               }
             }
           }
