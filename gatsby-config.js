@@ -4,7 +4,7 @@ require("dotenv").config({
 
 $siteTitle = "Dreamer"
 $siteUrl = `https://dreamer.cyou`
-$googleTrackingId = "G-F47RZ72DVC"
+$googleTrackingId = "UA-150121658-1"
 $facebookAppId = "768221287330161"
 
 module.exports = {

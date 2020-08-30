@@ -14,7 +14,7 @@ const IndexPage = () => (
     <StaticQuery
       query={graphql`
         query {
-          allArticle {
+          allArticle(sort: {fields: published_at, order: DESC}) {
             edges {
               node {
                 strapiId

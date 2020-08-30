@@ -23,7 +23,7 @@ interface IProps {
 
 export const query = graphql`
   query Category($id: String!) {
-    articles: allArticle(filter: { category: { id: { eq: $id } } }) {
+    articles: allArticle(filter: { category: { id: { eq: $id } } }, sort: { fields: published_at, order: DESC }) {
       edges {
         node {
           strapiId
