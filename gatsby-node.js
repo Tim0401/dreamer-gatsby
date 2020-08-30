@@ -45,6 +45,7 @@ exports.createPages = async ({ graphql, actions }) => {
   // Create blog articles pages.
   const articles = result.data.articles.edges
   const categories = result.data.categories.edges
+  const pages = result.data.pages.edges
 
   articles.forEach((article, index) => {
     createPage({
@@ -62,6 +63,16 @@ exports.createPages = async ({ graphql, actions }) => {
       component: require.resolve("./src/templates/category.tsx"),
       context: {
         id: category.node.strapiId,
+      },
+    })
+  })
+
+  pages.forEach((page, index) => {
+    createPage({
+      path: `/pages/${page.node.strapiId}`,
+      component: require.resolve("./src/templates/page.tsx"),
+      context: {
+        id: page.node.strapiId,
       },
     })
   })
@@ -87,6 +98,21 @@ exports.onCreateNode = ({ node, boundActionCreators, getNode }) => {
       children: [],
       internal: {
         type: "Article",
+        mediaType: "text/markdown",
+        content: node.content,
+        contentDigest: digest(node)
+      }
+    });
+  }
+
+  if (node.internal.type === "StrapiPage") {
+    createNode({
+      ...node,
+      id: node.id + "-markdown",
+      parent: node.id,
+      children: [],
+      internal: {
+        type: "Page",
         mediaType: "text/markdown",
         content: node.content,
         contentDigest: digest(node)

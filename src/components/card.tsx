@@ -29,6 +29,10 @@ const useStyles = makeStyles({
     justifyContent: 'space-between',
     flexDirection: 'column'
   },
+  cardaMedia: {
+    margin: "auto 0",
+    maxHeight: "300px"
+  },
   cardLink:{
     height: "100%"
   },
@@ -47,7 +51,7 @@ export default function ArticleCard({ article }: IProps) {
     <Card className={classes.root}>
       <Link to={`/articles/${article.node.strapiId}`} className={classes.cardLink}>
         <CardActionArea className={classes.cardActionArea}>
-          <CardMedia style={{ margin: "auto 0" }}
+          <CardMedia className={classes.cardaMedia}
             component="img"
             alt={article.node.image ? article.node.image.publicURL ? article.node.image.publicURL : noimage : noimage}
             height="140"
