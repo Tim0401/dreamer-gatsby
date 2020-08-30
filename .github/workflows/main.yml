@@ -35,9 +35,18 @@ jobs:
     - name: Deploy Firebase
       run: yarn deploy --token=${{ secrets.FIREBASE_TOKEN }}
 
-    - name: Webhook
+    - name: Webhook on success
+      if: ${{ success() }}
       uses: joelwmale/webhook-action@master
       with:
         url: ${{ secrets.WEBHOOK_URL }}
         headers: '{"repository": "joelwmale/webhook-action"}'
-        body: '{"value1": "${{ github.event_name }} by ${{ github.actor }}","value2": "${{ github.ref }}", "value3": "${{ github.event.head_commit.message }}"}'
+        body: '{"value1": "成功！","value2": "${{ github.event_name }} by ${{ github.actor }} on ${{ github.ref }}", "value3": "${{ github.event.head_commit.message }}"}'
+
+    - name: Webhook on failure
+      if: ${{ failure() }}
+      uses: joelwmale/webhook-action@master
+      with:
+        url: ${{ secrets.WEBHOOK_URL }}
+        headers: '{"repository": "joelwmale/webhook-action"}'
+        body: '{"value1": "失敗…","value2": "${{ github.event_name }} by ${{ github.actor }} on ${{ github.ref }}", "value3": "${{ github.event.head_commit.message }}"}'
