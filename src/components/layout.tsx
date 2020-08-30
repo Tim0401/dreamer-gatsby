@@ -1,6 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { ThemeProvider, createMuiTheme } from "@material-ui/core";
+import { ThemeProvider, createMuiTheme, responsiveFontSizes, ListItemText } from "@material-ui/core";
 import blue from '@material-ui/core/colors/blue';
 
 import Nav from "./nav"
@@ -14,7 +14,7 @@ interface IProps {
   title: string | undefined | null;
 }
 
-const theme = createMuiTheme({
+let theme = createMuiTheme({
   //テーマの定義
   palette: {
     type: 'light' // 'light'(default) or 'dark'
@@ -53,6 +53,8 @@ const theme = createMuiTheme({
     },
   },
 });
+
+theme = responsiveFontSizes(theme);
 
 const Layout = ({ children, title = "" }: IProps) => {
   return (

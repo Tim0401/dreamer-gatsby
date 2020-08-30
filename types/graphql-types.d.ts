@@ -5441,7 +5441,15 @@ export type Unnamed_5_Query = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSit
 export type Unnamed_6_QueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type Unnamed_6_Query = { site?: Maybe<Pick<Site, 'buildTime'>> };
+export type Unnamed_6_Query = { allArticle: { edges: Array<{ node: (
+        Pick<Article, 'strapiId' | 'title' | 'published_at'>
+        & { category?: Maybe<Pick<ArticleCategory, 'id' | 'name'>>, image?: Maybe<Pick<File, 'publicURL'>>, childMarkdownRemark?: Maybe<Pick<MarkdownRemark, 'html' | 'excerpt'>> }
+      ) }> }, site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'title' | 'description' | 'concept'>> }> };
+
+export type Unnamed_7_QueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type Unnamed_7_Query = { site?: Maybe<Pick<Site, 'buildTime'>> };
 
 export type ArticleQueryQueryVariables = Exact<{
   id: Scalars['String'];

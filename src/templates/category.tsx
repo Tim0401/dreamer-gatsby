@@ -55,7 +55,7 @@ const Category = ({ data }: IProps) => {
 
   return (
     <Layout title={category}>
-      <Box m={5}>
+      <Box  m={{ xs: 1, sm: 3, md: 5 }} >
         <Box mb={2}>
           <Typography variant="h3" noWrap>{category}</Typography>
         </Box>

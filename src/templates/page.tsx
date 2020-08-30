@@ -56,7 +56,7 @@ const Page = ({ data }: IProps) => {
   const classes = useStyles();
   return (
     <Layout title={page.title}>
-      <Box m={4}>
+      <Box m={{ xs: 1, sm: 3, md: 5 }}>
         <Box >
           <div
             id="banner"
