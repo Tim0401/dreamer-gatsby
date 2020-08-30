@@ -55,7 +55,7 @@ const Page = ({ data }: IProps) => {
   const page = data.page
   const classes = useStyles();
   return (
-    <Layout>
+    <Layout title={page.title}>
       <Box m={4}>
         <Box >
           <div

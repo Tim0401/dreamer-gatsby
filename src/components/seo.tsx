@@ -14,7 +14,7 @@ interface IProps {
   description?: string
   lang?: string
   meta?: any
-  title?: string
+  title?: string | null | undefined
 }
 
 function SEO({ description, lang, meta, title }: IProps) {
@@ -33,7 +33,7 @@ function SEO({ description, lang, meta, title }: IProps) {
   )
 
   const metaDescription = description || site.siteMetadata.description
-  title = site.siteMetadata.title
+  const metaTitle = title || site.siteMetadata.title
   meta = meta ? meta : []
 
   return (
@@ -41,7 +41,7 @@ function SEO({ description, lang, meta, title }: IProps) {
       htmlAttributes={{
         lang,
       }}
-      title={title}
+      title={metaTitle}
       titleTemplate={`%s | ${site.siteMetadata.title}`}
       meta={[
         {
@@ -50,7 +50,7 @@ function SEO({ description, lang, meta, title }: IProps) {
         },
         {
           property: "og:title",
-          content: title,
+          content: metaTitle,
         },
         {
           property: "og:description",
@@ -70,7 +70,7 @@ function SEO({ description, lang, meta, title }: IProps) {
         },
         {
           name: "twitter:title",
-          content: title,
+          content: metaTitle,
         },
         {
           name: "twitter:description",

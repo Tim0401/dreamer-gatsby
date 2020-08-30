@@ -3,9 +3,9 @@ require("dotenv").config({
 })
 
 $siteTitle = "Dreamer"
-$siteUrl = `https://www.example.com`
-$googleTrackingId = ""
-$facebookAppId = ""
+$siteUrl = `https://dreamer.cyou`
+$googleTrackingId = "G-F47RZ72DVC"
+$facebookAppId = "768221287330161"
 
 module.exports = {
 	siteMetadata: {
@@ -16,6 +16,13 @@ module.exports = {
 		siteUrl: $siteUrl,
 	},
 	plugins: [
+		{
+			resolve: `gatsby-plugin-google-analytics`,
+			options: {
+				trackingId: $googleTrackingId,
+				head: true,
+			},
+		},
 		"gatsby-plugin-react-helmet",
 		{
 			resolve: `gatsby-source-filesystem`,
@@ -96,12 +103,6 @@ module.exports = {
 			},
 		},
 		{
-			resolve: `gatsby-plugin-google-analytics`,
-			options: {
-				trackingId: $googleTrackingId,
-			},
-		},
-		{
 			resolve: `gatsby-plugin-facebook-analytics`,
 			options: {
 				appId: $facebookAppId,
@@ -111,6 +112,7 @@ module.exports = {
 				// SDKのデバックバージョンを含めるか
 				// デフォルトはfalseでライブラリはsdk.jsをロードします。
 				debug: false,
+				xfbml: false,
 				// 言語を指定。デフォルトはenglish
 				language: "ja-jp",
 			},

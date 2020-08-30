@@ -3511,6 +3511,8 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___pluginOptions___plugins___browserAPIs'
   | 'pluginCreator___pluginOptions___plugins___ssrAPIs'
   | 'pluginCreator___pluginOptions___plugins___pluginFilepath'
+  | 'pluginCreator___pluginOptions___trackingId'
+  | 'pluginCreator___pluginOptions___head'
   | 'pluginCreator___pluginOptions___name'
   | 'pluginCreator___pluginOptions___path'
   | 'pluginCreator___pluginOptions___apiURL'
@@ -3532,10 +3534,10 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___pluginOptions___sitemapSize'
   | 'pluginCreator___pluginOptions___color'
   | 'pluginCreator___pluginOptions___showSpinner'
-  | 'pluginCreator___pluginOptions___trackingId'
   | 'pluginCreator___pluginOptions___appId'
   | 'pluginCreator___pluginOptions___includeInDevelopment'
   | 'pluginCreator___pluginOptions___debug'
+  | 'pluginCreator___pluginOptions___xfbml'
   | 'pluginCreator___pluginOptions___language'
   | 'pluginCreator___pluginOptions___commonmark'
   | 'pluginCreator___pluginOptions___footnotes'
@@ -3765,6 +3767,8 @@ export type SitePluginFieldsEnum =
   | 'pluginOptions___plugins___browserAPIs'
   | 'pluginOptions___plugins___ssrAPIs'
   | 'pluginOptions___plugins___pluginFilepath'
+  | 'pluginOptions___trackingId'
+  | 'pluginOptions___head'
   | 'pluginOptions___name'
   | 'pluginOptions___path'
   | 'pluginOptions___apiURL'
@@ -3786,10 +3790,10 @@ export type SitePluginFieldsEnum =
   | 'pluginOptions___sitemapSize'
   | 'pluginOptions___color'
   | 'pluginOptions___showSpinner'
-  | 'pluginOptions___trackingId'
   | 'pluginOptions___appId'
   | 'pluginOptions___includeInDevelopment'
   | 'pluginOptions___debug'
+  | 'pluginOptions___xfbml'
   | 'pluginOptions___language'
   | 'pluginOptions___commonmark'
   | 'pluginOptions___footnotes'
@@ -3926,6 +3930,8 @@ export type SitePluginPackageJsonPeerDependenciesFilterListInput = {
 
 export type SitePluginPluginOptions = {
   plugins?: Maybe<Array<Maybe<SitePluginPluginOptionsPlugins>>>;
+  trackingId?: Maybe<Scalars['String']>;
+  head?: Maybe<Scalars['Boolean']>;
   name?: Maybe<Scalars['String']>;
   path?: Maybe<Scalars['String']>;
   apiURL?: Maybe<Scalars['String']>;
@@ -3947,10 +3953,10 @@ export type SitePluginPluginOptions = {
   sitemapSize?: Maybe<Scalars['Int']>;
   color?: Maybe<Scalars['String']>;
   showSpinner?: Maybe<Scalars['Boolean']>;
-  trackingId?: Maybe<Scalars['String']>;
   appId?: Maybe<Scalars['String']>;
   includeInDevelopment?: Maybe<Scalars['Boolean']>;
   debug?: Maybe<Scalars['Boolean']>;
+  xfbml?: Maybe<Scalars['Boolean']>;
   language?: Maybe<Scalars['String']>;
   commonmark?: Maybe<Scalars['Boolean']>;
   footnotes?: Maybe<Scalars['Boolean']>;
@@ -3973,6 +3979,8 @@ export type SitePluginPluginOptions = {
 
 export type SitePluginPluginOptionsFilterInput = {
   plugins?: Maybe<SitePluginPluginOptionsPluginsFilterListInput>;
+  trackingId?: Maybe<StringQueryOperatorInput>;
+  head?: Maybe<BooleanQueryOperatorInput>;
   name?: Maybe<StringQueryOperatorInput>;
   path?: Maybe<StringQueryOperatorInput>;
   apiURL?: Maybe<StringQueryOperatorInput>;
@@ -3994,10 +4002,10 @@ export type SitePluginPluginOptionsFilterInput = {
   sitemapSize?: Maybe<IntQueryOperatorInput>;
   color?: Maybe<StringQueryOperatorInput>;
   showSpinner?: Maybe<BooleanQueryOperatorInput>;
-  trackingId?: Maybe<StringQueryOperatorInput>;
   appId?: Maybe<StringQueryOperatorInput>;
   includeInDevelopment?: Maybe<BooleanQueryOperatorInput>;
   debug?: Maybe<BooleanQueryOperatorInput>;
+  xfbml?: Maybe<BooleanQueryOperatorInput>;
   language?: Maybe<StringQueryOperatorInput>;
   commonmark?: Maybe<BooleanQueryOperatorInput>;
   footnotes?: Maybe<BooleanQueryOperatorInput>;

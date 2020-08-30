@@ -11,6 +11,7 @@ import "../assets/css/main.scss"
 
 interface IProps {
   children: React.ReactNode;
+  title: string | undefined | null;
 }
 
 const theme = createMuiTheme({
@@ -53,10 +54,10 @@ const theme = createMuiTheme({
   },
 });
 
-const Layout = ({ children }: IProps) => {
+const Layout = ({ children, title = "" }: IProps) => {
   return (
     <ThemeProvider theme={theme}>
-      <Seo lang="ja" />
+      <Seo lang="ja" title={title} />
       <Content children={children} />
     </ThemeProvider>
   )

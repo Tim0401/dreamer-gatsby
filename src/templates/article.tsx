@@ -58,7 +58,7 @@ const Article = ({ data }: IProps) => {
   const article = data.article
   const classes = useStyles();
   return (
-    <Layout>
+    <Layout title={article.title}>
       <Box m={4}>
         <Box >
           <div
