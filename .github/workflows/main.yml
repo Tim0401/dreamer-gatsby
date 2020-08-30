@@ -40,4 +40,4 @@ jobs:
       with:
         url: ${{ secrets.WEBHOOK_URL }}
         headers: '{"repository": "joelwmale/webhook-action"}'
-        body: '{"value1": "${{ github.event_name }} by ${{ github.actor }}","value2": ${{ github.ref }}, "value3":${{ github.event.head_commit.message }}}'
+        body: '{"value1": "${{ github.event_name }} by ${{ github.actor }}","value2": "${{ github.ref }}", "value3": "${{ github.event.head_commit.message }}"}'
