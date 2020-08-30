@@ -34,3 +34,10 @@ jobs:
       run: npm install -g firebase-tools
     - name: Deploy Firebase
       run: yarn deploy --token=${{ secrets.FIREBASE_TOKEN }}
+    - name: Webhook
+    
+    - uses: joelwmale/webhook-action@master
+    - with:
+        url: ${{ secrets.WEBHOOK_URL }}
+        headers: '{"repository": "joelwmale/webhook-action"}'
+        body: '{"value1": "${{ github.event_name }} by ${{ github.actor }}","value2": ${{ github.ref }}, "value3":${{ github.event.head_commit.message }}}'
