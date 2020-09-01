@@ -7727,9 +7727,9 @@ gatsby-source-filesystem@^2.3.27:
     valid-url "^1.0.9"
     xstate "^4.11.0"
 
-"gatsby-source-strapi@git+ssh://git@github.com:unagigd/gatsby-source-strapi.git":
+"gatsby-source-strapi@git+https://github.com/unagigd/gatsby-source-strapi.git":
   version "0.0.12"
-  resolved "git+ssh://git@github.com:unagigd/gatsby-source-strapi.git#e3ac5dd7143324ddcd1d34d840560f919d2fda84"
+  resolved "git+https://github.com/unagigd/gatsby-source-strapi.git#e3ac5dd7143324ddcd1d34d840560f919d2fda84"
   dependencies:
     axios "^0.18.0"
     commonmark "^0.29.1"
