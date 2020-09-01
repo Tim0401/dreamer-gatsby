@@ -14,8 +14,10 @@ import Divider from '@material-ui/core/Divider';
 import SideBar from '../components/sidebar'
 import Typography from '@material-ui/core/Typography';
 
+import { RawMarkdown } from "../components/raw-markdown";
+
 interface IBProps {
-  page: StrapiPage
+  strapiPage: StrapiPage
 }
 
 interface IProps {
@@ -24,25 +26,37 @@ interface IProps {
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    bgBox: { 
-      backgroundColor: "rgba(0,0,0,0.6)", 
-      height: "100%", 
+    bgBox: {
+      backgroundColor: "rgba(0,0,0,0.6)",
+      height: "100%",
       width: "100%",
       display: "flex",
       alignItems: "center",
       justifyContent: "center"
-     }
+    }
   })
 );
 
 export const query = graphql`
   query PageQuery($id: String!) {
-    page(strapiId: { eq: $id }) {
+    strapiPage(strapiId: { eq: $id }) {
       strapiId
       title
       content
-      childMarkdownRemark {
-        html
+      content_images { 
+        childImageSharp { 
+          original { 
+            src 
+          } 
+          fluid { 
+            base64
+            aspectRatio
+            src
+            srcSet
+            sizes
+          } 
+        } 
+        base
       }
       image {
         publicURL
@@ -52,7 +66,7 @@ export const query = graphql`
 `
 
 const Page = ({ data }: IProps) => {
-  const page = data.page
+  const page = data.strapiPage
   const classes = useStyles();
   return (
     <Layout title={page.title}>
@@ -74,7 +88,7 @@ const Page = ({ data }: IProps) => {
         <Box mt={2}>
           <Grid container spacing={1}>
             <Grid item xs={12} md={8} lg={9}>
-              <div dangerouslySetInnerHTML={{ __html: page.childMarkdownRemark.html }} />
+              <RawMarkdown source={page.content} contentImages={page.content_images} />
             </Grid>
             <Grid item xs={12} md={4} lg={3}>
               <SideBar />

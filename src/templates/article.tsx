@@ -16,6 +16,8 @@ import Divider from '@material-ui/core/Divider';
 import SideBar from '../components/sidebar'
 import Typography from '@material-ui/core/Typography';
 
+import { RawMarkdown } from "../components/raw-markdown";
+
 interface IBProps {
   article: StrapiArticle
 }
@@ -26,14 +28,14 @@ interface IProps {
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    bgBox: { 
-      backgroundColor: "rgba(0,0,0,0.6)", 
-      height: "100%", 
+    bgBox: {
+      backgroundColor: "rgba(0,0,0,0.6)",
+      height: "100%",
       width: "100%",
       display: "flex",
       alignItems: "center",
       justifyContent: "center"
-     }
+    }
   })
 );
 
@@ -43,8 +45,20 @@ export const query = graphql`
       strapiId
       title
       content
-      childMarkdownRemark {
-        html
+      content_images { 
+        childImageSharp { 
+          original { 
+            src 
+          } 
+          fluid { 
+            base64
+            aspectRatio
+            src
+            srcSet
+            sizes
+          } 
+        } 
+        base 
       }
       published_at
       image {
@@ -77,8 +91,7 @@ const Article = ({ data }: IProps) => {
         <Box mt={2}>
           <Grid container spacing={1}>
             <Grid item xs={12} md={8} lg={9}>
-
-              <div dangerouslySetInnerHTML={{ __html: article.childMarkdownRemark.html }} />
+              <RawMarkdown source={article.content} contentImages={article.content_images} />
               <p>
                 <Moment format="MMM Do YYYY">{article.published_at}</Moment>
               </p>

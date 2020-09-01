@@ -104,19 +104,4 @@ exports.onCreateNode = ({ node, boundActionCreators, getNode }) => {
       }
     });
   }
-
-  if (node.internal.type === "StrapiPage") {
-    createNode({
-      ...node,
-      id: node.id + "-markdown",
-      parent: node.id,
-      children: [],
-      internal: {
-        type: "Page",
-        mediaType: "text/markdown",
-        content: node.content,
-        contentDigest: digest(node)
-      }
-    });
-  }
 };

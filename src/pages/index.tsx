@@ -48,7 +48,6 @@ const IndexPage = () => {
                   publicURL
                 }
                 childMarkdownRemark {
-                  html
                   excerpt(truncate: true)
                 }
                 published_at

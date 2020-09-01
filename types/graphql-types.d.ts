@@ -41,6 +41,7 @@ export type Article = Node & {
   category?: Maybe<ArticleCategory>;
   image?: Maybe<File>;
   tags?: Maybe<Array<Maybe<ArticleTags>>>;
+  content_images?: Maybe<Array<Maybe<File>>>;
   strapiId?: Maybe<Scalars['String']>;
   childMarkdownRemark?: Maybe<MarkdownRemark>;
 };
@@ -417,6 +418,146 @@ export type ArticleFieldsEnum =
   | 'tags___created_by'
   | 'tags___updated_by'
   | 'tags___id'
+  | 'content_images'
+  | 'content_images___sourceInstanceName'
+  | 'content_images___absolutePath'
+  | 'content_images___relativePath'
+  | 'content_images___extension'
+  | 'content_images___size'
+  | 'content_images___prettySize'
+  | 'content_images___modifiedTime'
+  | 'content_images___accessTime'
+  | 'content_images___changeTime'
+  | 'content_images___birthTime'
+  | 'content_images___root'
+  | 'content_images___dir'
+  | 'content_images___base'
+  | 'content_images___ext'
+  | 'content_images___name'
+  | 'content_images___relativeDirectory'
+  | 'content_images___dev'
+  | 'content_images___mode'
+  | 'content_images___nlink'
+  | 'content_images___uid'
+  | 'content_images___gid'
+  | 'content_images___rdev'
+  | 'content_images___ino'
+  | 'content_images___atimeMs'
+  | 'content_images___mtimeMs'
+  | 'content_images___ctimeMs'
+  | 'content_images___atime'
+  | 'content_images___mtime'
+  | 'content_images___ctime'
+  | 'content_images___birthtime'
+  | 'content_images___birthtimeMs'
+  | 'content_images___blksize'
+  | 'content_images___blocks'
+  | 'content_images___publicURL'
+  | 'content_images___childImageSharp___fixed___base64'
+  | 'content_images___childImageSharp___fixed___tracedSVG'
+  | 'content_images___childImageSharp___fixed___aspectRatio'
+  | 'content_images___childImageSharp___fixed___width'
+  | 'content_images___childImageSharp___fixed___height'
+  | 'content_images___childImageSharp___fixed___src'
+  | 'content_images___childImageSharp___fixed___srcSet'
+  | 'content_images___childImageSharp___fixed___srcWebp'
+  | 'content_images___childImageSharp___fixed___srcSetWebp'
+  | 'content_images___childImageSharp___fixed___originalName'
+  | 'content_images___childImageSharp___resolutions___base64'
+  | 'content_images___childImageSharp___resolutions___tracedSVG'
+  | 'content_images___childImageSharp___resolutions___aspectRatio'
+  | 'content_images___childImageSharp___resolutions___width'
+  | 'content_images___childImageSharp___resolutions___height'
+  | 'content_images___childImageSharp___resolutions___src'
+  | 'content_images___childImageSharp___resolutions___srcSet'
+  | 'content_images___childImageSharp___resolutions___srcWebp'
+  | 'content_images___childImageSharp___resolutions___srcSetWebp'
+  | 'content_images___childImageSharp___resolutions___originalName'
+  | 'content_images___childImageSharp___fluid___base64'
+  | 'content_images___childImageSharp___fluid___tracedSVG'
+  | 'content_images___childImageSharp___fluid___aspectRatio'
+  | 'content_images___childImageSharp___fluid___src'
+  | 'content_images___childImageSharp___fluid___srcSet'
+  | 'content_images___childImageSharp___fluid___srcWebp'
+  | 'content_images___childImageSharp___fluid___srcSetWebp'
+  | 'content_images___childImageSharp___fluid___sizes'
+  | 'content_images___childImageSharp___fluid___originalImg'
+  | 'content_images___childImageSharp___fluid___originalName'
+  | 'content_images___childImageSharp___fluid___presentationWidth'
+  | 'content_images___childImageSharp___fluid___presentationHeight'
+  | 'content_images___childImageSharp___sizes___base64'
+  | 'content_images___childImageSharp___sizes___tracedSVG'
+  | 'content_images___childImageSharp___sizes___aspectRatio'
+  | 'content_images___childImageSharp___sizes___src'
+  | 'content_images___childImageSharp___sizes___srcSet'
+  | 'content_images___childImageSharp___sizes___srcWebp'
+  | 'content_images___childImageSharp___sizes___srcSetWebp'
+  | 'content_images___childImageSharp___sizes___sizes'
+  | 'content_images___childImageSharp___sizes___originalImg'
+  | 'content_images___childImageSharp___sizes___originalName'
+  | 'content_images___childImageSharp___sizes___presentationWidth'
+  | 'content_images___childImageSharp___sizes___presentationHeight'
+  | 'content_images___childImageSharp___original___width'
+  | 'content_images___childImageSharp___original___height'
+  | 'content_images___childImageSharp___original___src'
+  | 'content_images___childImageSharp___resize___src'
+  | 'content_images___childImageSharp___resize___tracedSVG'
+  | 'content_images___childImageSharp___resize___width'
+  | 'content_images___childImageSharp___resize___height'
+  | 'content_images___childImageSharp___resize___aspectRatio'
+  | 'content_images___childImageSharp___resize___originalName'
+  | 'content_images___childImageSharp___id'
+  | 'content_images___childImageSharp___parent___id'
+  | 'content_images___childImageSharp___parent___children'
+  | 'content_images___childImageSharp___children'
+  | 'content_images___childImageSharp___children___id'
+  | 'content_images___childImageSharp___children___children'
+  | 'content_images___childImageSharp___internal___content'
+  | 'content_images___childImageSharp___internal___contentDigest'
+  | 'content_images___childImageSharp___internal___description'
+  | 'content_images___childImageSharp___internal___fieldOwners'
+  | 'content_images___childImageSharp___internal___ignoreType'
+  | 'content_images___childImageSharp___internal___mediaType'
+  | 'content_images___childImageSharp___internal___owner'
+  | 'content_images___childImageSharp___internal___type'
+  | 'content_images___id'
+  | 'content_images___parent___id'
+  | 'content_images___parent___parent___id'
+  | 'content_images___parent___parent___children'
+  | 'content_images___parent___children'
+  | 'content_images___parent___children___id'
+  | 'content_images___parent___children___children'
+  | 'content_images___parent___internal___content'
+  | 'content_images___parent___internal___contentDigest'
+  | 'content_images___parent___internal___description'
+  | 'content_images___parent___internal___fieldOwners'
+  | 'content_images___parent___internal___ignoreType'
+  | 'content_images___parent___internal___mediaType'
+  | 'content_images___parent___internal___owner'
+  | 'content_images___parent___internal___type'
+  | 'content_images___children'
+  | 'content_images___children___id'
+  | 'content_images___children___parent___id'
+  | 'content_images___children___parent___children'
+  | 'content_images___children___children'
+  | 'content_images___children___children___id'
+  | 'content_images___children___children___children'
+  | 'content_images___children___internal___content'
+  | 'content_images___children___internal___contentDigest'
+  | 'content_images___children___internal___description'
+  | 'content_images___children___internal___fieldOwners'
+  | 'content_images___children___internal___ignoreType'
+  | 'content_images___children___internal___mediaType'
+  | 'content_images___children___internal___owner'
+  | 'content_images___children___internal___type'
+  | 'content_images___internal___content'
+  | 'content_images___internal___contentDigest'
+  | 'content_images___internal___description'
+  | 'content_images___internal___fieldOwners'
+  | 'content_images___internal___ignoreType'
+  | 'content_images___internal___mediaType'
+  | 'content_images___internal___owner'
+  | 'content_images___internal___type'
   | 'strapiId'
   | 'childMarkdownRemark___id'
   | 'childMarkdownRemark___frontmatter___title'
@@ -487,6 +628,7 @@ export type ArticleFilterInput = {
   category?: Maybe<ArticleCategoryFilterInput>;
   image?: Maybe<FileFilterInput>;
   tags?: Maybe<ArticleTagsFilterListInput>;
+  content_images?: Maybe<FileFilterListInput>;
   strapiId?: Maybe<StringQueryOperatorInput>;
   childMarkdownRemark?: Maybe<MarkdownRemarkFilterInput>;
 };
@@ -1283,6 +1425,10 @@ export type FileFilterInput = {
   parent?: Maybe<NodeFilterInput>;
   children?: Maybe<NodeFilterListInput>;
   internal?: Maybe<InternalFilterInput>;
+};
+
+export type FileFilterListInput = {
+  elemMatch?: Maybe<FileFilterInput>;
 };
 
 export type FileGroupConnection = {
@@ -2122,417 +2268,6 @@ export type NodeFilterListInput = {
   elemMatch?: Maybe<NodeFilterInput>;
 };
 
-export type Page = Node & {
-  id: Scalars['ID'];
-  parent?: Maybe<Node>;
-  children: Array<Node>;
-  internal: Internal;
-  image?: Maybe<File>;
-  title?: Maybe<Scalars['String']>;
-  content?: Maybe<Scalars['String']>;
-  createdAt?: Maybe<Scalars['Date']>;
-  updatedAt?: Maybe<Scalars['Date']>;
-  created_by?: Maybe<PageCreated_By>;
-  updated_by?: Maybe<PageUpdated_By>;
-  strapiId?: Maybe<Scalars['String']>;
-  childMarkdownRemark?: Maybe<MarkdownRemark>;
-};
-
-
-export type PageCreatedAtArgs = {
-  formatString?: Maybe<Scalars['String']>;
-  fromNow?: Maybe<Scalars['Boolean']>;
-  difference?: Maybe<Scalars['String']>;
-  locale?: Maybe<Scalars['String']>;
-};
-
-
-export type PageUpdatedAtArgs = {
-  formatString?: Maybe<Scalars['String']>;
-  fromNow?: Maybe<Scalars['Boolean']>;
-  difference?: Maybe<Scalars['String']>;
-  locale?: Maybe<Scalars['String']>;
-};
-
-export type PageConnection = {
-  totalCount: Scalars['Int'];
-  edges: Array<PageEdge>;
-  nodes: Array<Page>;
-  pageInfo: PageInfo;
-  distinct: Array<Scalars['String']>;
-  group: Array<PageGroupConnection>;
-};
-
-
-export type PageConnectionDistinctArgs = {
-  field: PageFieldsEnum;
-};
-
-
-export type PageConnectionGroupArgs = {
-  skip?: Maybe<Scalars['Int']>;
-  limit?: Maybe<Scalars['Int']>;
-  field: PageFieldsEnum;
-};
-
-export type PageCreated_By = {
-  firstname?: Maybe<Scalars['String']>;
-  lastname?: Maybe<Scalars['String']>;
-  createdAt?: Maybe<Scalars['Date']>;
-  updatedAt?: Maybe<Scalars['Date']>;
-  id?: Maybe<Scalars['String']>;
-};
-
-
-export type PageCreated_ByCreatedAtArgs = {
-  formatString?: Maybe<Scalars['String']>;
-  fromNow?: Maybe<Scalars['Boolean']>;
-  difference?: Maybe<Scalars['String']>;
-  locale?: Maybe<Scalars['String']>;
-};
-
-
-export type PageCreated_ByUpdatedAtArgs = {
-  formatString?: Maybe<Scalars['String']>;
-  fromNow?: Maybe<Scalars['Boolean']>;
-  difference?: Maybe<Scalars['String']>;
-  locale?: Maybe<Scalars['String']>;
-};
-
-export type PageCreated_ByFilterInput = {
-  firstname?: Maybe<StringQueryOperatorInput>;
-  lastname?: Maybe<StringQueryOperatorInput>;
-  createdAt?: Maybe<DateQueryOperatorInput>;
-  updatedAt?: Maybe<DateQueryOperatorInput>;
-  id?: Maybe<StringQueryOperatorInput>;
-};
-
-export type PageEdge = {
-  next?: Maybe<Page>;
-  node: Page;
-  previous?: Maybe<Page>;
-};
-
-export type PageFieldsEnum = 
-  | 'id'
-  | 'parent___id'
-  | 'parent___parent___id'
-  | 'parent___parent___parent___id'
-  | 'parent___parent___parent___children'
-  | 'parent___parent___children'
-  | 'parent___parent___children___id'
-  | 'parent___parent___children___children'
-  | 'parent___parent___internal___content'
-  | 'parent___parent___internal___contentDigest'
-  | 'parent___parent___internal___description'
-  | 'parent___parent___internal___fieldOwners'
-  | 'parent___parent___internal___ignoreType'
-  | 'parent___parent___internal___mediaType'
-  | 'parent___parent___internal___owner'
-  | 'parent___parent___internal___type'
-  | 'parent___children'
-  | 'parent___children___id'
-  | 'parent___children___parent___id'
-  | 'parent___children___parent___children'
-  | 'parent___children___children'
-  | 'parent___children___children___id'
-  | 'parent___children___children___children'
-  | 'parent___children___internal___content'
-  | 'parent___children___internal___contentDigest'
-  | 'parent___children___internal___description'
-  | 'parent___children___internal___fieldOwners'
-  | 'parent___children___internal___ignoreType'
-  | 'parent___children___internal___mediaType'
-  | 'parent___children___internal___owner'
-  | 'parent___children___internal___type'
-  | 'parent___internal___content'
-  | 'parent___internal___contentDigest'
-  | 'parent___internal___description'
-  | 'parent___internal___fieldOwners'
-  | 'parent___internal___ignoreType'
-  | 'parent___internal___mediaType'
-  | 'parent___internal___owner'
-  | 'parent___internal___type'
-  | 'children'
-  | 'children___id'
-  | 'children___parent___id'
-  | 'children___parent___parent___id'
-  | 'children___parent___parent___children'
-  | 'children___parent___children'
-  | 'children___parent___children___id'
-  | 'children___parent___children___children'
-  | 'children___parent___internal___content'
-  | 'children___parent___internal___contentDigest'
-  | 'children___parent___internal___description'
-  | 'children___parent___internal___fieldOwners'
-  | 'children___parent___internal___ignoreType'
-  | 'children___parent___internal___mediaType'
-  | 'children___parent___internal___owner'
-  | 'children___parent___internal___type'
-  | 'children___children'
-  | 'children___children___id'
-  | 'children___children___parent___id'
-  | 'children___children___parent___children'
-  | 'children___children___children'
-  | 'children___children___children___id'
-  | 'children___children___children___children'
-  | 'children___children___internal___content'
-  | 'children___children___internal___contentDigest'
-  | 'children___children___internal___description'
-  | 'children___children___internal___fieldOwners'
-  | 'children___children___internal___ignoreType'
-  | 'children___children___internal___mediaType'
-  | 'children___children___internal___owner'
-  | 'children___children___internal___type'
-  | 'children___internal___content'
-  | 'children___internal___contentDigest'
-  | 'children___internal___description'
-  | 'children___internal___fieldOwners'
-  | 'children___internal___ignoreType'
-  | 'children___internal___mediaType'
-  | 'children___internal___owner'
-  | 'children___internal___type'
-  | 'internal___content'
-  | 'internal___contentDigest'
-  | 'internal___description'
-  | 'internal___fieldOwners'
-  | 'internal___ignoreType'
-  | 'internal___mediaType'
-  | 'internal___owner'
-  | 'internal___type'
-  | 'image___sourceInstanceName'
-  | 'image___absolutePath'
-  | 'image___relativePath'
-  | 'image___extension'
-  | 'image___size'
-  | 'image___prettySize'
-  | 'image___modifiedTime'
-  | 'image___accessTime'
-  | 'image___changeTime'
-  | 'image___birthTime'
-  | 'image___root'
-  | 'image___dir'
-  | 'image___base'
-  | 'image___ext'
-  | 'image___name'
-  | 'image___relativeDirectory'
-  | 'image___dev'
-  | 'image___mode'
-  | 'image___nlink'
-  | 'image___uid'
-  | 'image___gid'
-  | 'image___rdev'
-  | 'image___ino'
-  | 'image___atimeMs'
-  | 'image___mtimeMs'
-  | 'image___ctimeMs'
-  | 'image___atime'
-  | 'image___mtime'
-  | 'image___ctime'
-  | 'image___birthtime'
-  | 'image___birthtimeMs'
-  | 'image___blksize'
-  | 'image___blocks'
-  | 'image___publicURL'
-  | 'image___childImageSharp___fixed___base64'
-  | 'image___childImageSharp___fixed___tracedSVG'
-  | 'image___childImageSharp___fixed___aspectRatio'
-  | 'image___childImageSharp___fixed___width'
-  | 'image___childImageSharp___fixed___height'
-  | 'image___childImageSharp___fixed___src'
-  | 'image___childImageSharp___fixed___srcSet'
-  | 'image___childImageSharp___fixed___srcWebp'
-  | 'image___childImageSharp___fixed___srcSetWebp'
-  | 'image___childImageSharp___fixed___originalName'
-  | 'image___childImageSharp___resolutions___base64'
-  | 'image___childImageSharp___resolutions___tracedSVG'
-  | 'image___childImageSharp___resolutions___aspectRatio'
-  | 'image___childImageSharp___resolutions___width'
-  | 'image___childImageSharp___resolutions___height'
-  | 'image___childImageSharp___resolutions___src'
-  | 'image___childImageSharp___resolutions___srcSet'
-  | 'image___childImageSharp___resolutions___srcWebp'
-  | 'image___childImageSharp___resolutions___srcSetWebp'
-  | 'image___childImageSharp___resolutions___originalName'
-  | 'image___childImageSharp___fluid___base64'
-  | 'image___childImageSharp___fluid___tracedSVG'
-  | 'image___childImageSharp___fluid___aspectRatio'
-  | 'image___childImageSharp___fluid___src'
-  | 'image___childImageSharp___fluid___srcSet'
-  | 'image___childImageSharp___fluid___srcWebp'
-  | 'image___childImageSharp___fluid___srcSetWebp'
-  | 'image___childImageSharp___fluid___sizes'
-  | 'image___childImageSharp___fluid___originalImg'
-  | 'image___childImageSharp___fluid___originalName'
-  | 'image___childImageSharp___fluid___presentationWidth'
-  | 'image___childImageSharp___fluid___presentationHeight'
-  | 'image___childImageSharp___sizes___base64'
-  | 'image___childImageSharp___sizes___tracedSVG'
-  | 'image___childImageSharp___sizes___aspectRatio'
-  | 'image___childImageSharp___sizes___src'
-  | 'image___childImageSharp___sizes___srcSet'
-  | 'image___childImageSharp___sizes___srcWebp'
-  | 'image___childImageSharp___sizes___srcSetWebp'
-  | 'image___childImageSharp___sizes___sizes'
-  | 'image___childImageSharp___sizes___originalImg'
-  | 'image___childImageSharp___sizes___originalName'
-  | 'image___childImageSharp___sizes___presentationWidth'
-  | 'image___childImageSharp___sizes___presentationHeight'
-  | 'image___childImageSharp___original___width'
-  | 'image___childImageSharp___original___height'
-  | 'image___childImageSharp___original___src'
-  | 'image___childImageSharp___resize___src'
-  | 'image___childImageSharp___resize___tracedSVG'
-  | 'image___childImageSharp___resize___width'
-  | 'image___childImageSharp___resize___height'
-  | 'image___childImageSharp___resize___aspectRatio'
-  | 'image___childImageSharp___resize___originalName'
-  | 'image___childImageSharp___id'
-  | 'image___childImageSharp___parent___id'
-  | 'image___childImageSharp___parent___children'
-  | 'image___childImageSharp___children'
-  | 'image___childImageSharp___children___id'
-  | 'image___childImageSharp___children___children'
-  | 'image___childImageSharp___internal___content'
-  | 'image___childImageSharp___internal___contentDigest'
-  | 'image___childImageSharp___internal___description'
-  | 'image___childImageSharp___internal___fieldOwners'
-  | 'image___childImageSharp___internal___ignoreType'
-  | 'image___childImageSharp___internal___mediaType'
-  | 'image___childImageSharp___internal___owner'
-  | 'image___childImageSharp___internal___type'
-  | 'image___id'
-  | 'image___parent___id'
-  | 'image___parent___parent___id'
-  | 'image___parent___parent___children'
-  | 'image___parent___children'
-  | 'image___parent___children___id'
-  | 'image___parent___children___children'
-  | 'image___parent___internal___content'
-  | 'image___parent___internal___contentDigest'
-  | 'image___parent___internal___description'
-  | 'image___parent___internal___fieldOwners'
-  | 'image___parent___internal___ignoreType'
-  | 'image___parent___internal___mediaType'
-  | 'image___parent___internal___owner'
-  | 'image___parent___internal___type'
-  | 'image___children'
-  | 'image___children___id'
-  | 'image___children___parent___id'
-  | 'image___children___parent___children'
-  | 'image___children___children'
-  | 'image___children___children___id'
-  | 'image___children___children___children'
-  | 'image___children___internal___content'
-  | 'image___children___internal___contentDigest'
-  | 'image___children___internal___description'
-  | 'image___children___internal___fieldOwners'
-  | 'image___children___internal___ignoreType'
-  | 'image___children___internal___mediaType'
-  | 'image___children___internal___owner'
-  | 'image___children___internal___type'
-  | 'image___internal___content'
-  | 'image___internal___contentDigest'
-  | 'image___internal___description'
-  | 'image___internal___fieldOwners'
-  | 'image___internal___ignoreType'
-  | 'image___internal___mediaType'
-  | 'image___internal___owner'
-  | 'image___internal___type'
-  | 'title'
-  | 'content'
-  | 'createdAt'
-  | 'updatedAt'
-  | 'created_by___firstname'
-  | 'created_by___lastname'
-  | 'created_by___createdAt'
-  | 'created_by___updatedAt'
-  | 'created_by___id'
-  | 'updated_by___firstname'
-  | 'updated_by___lastname'
-  | 'updated_by___createdAt'
-  | 'updated_by___updatedAt'
-  | 'updated_by___id'
-  | 'strapiId'
-  | 'childMarkdownRemark___id'
-  | 'childMarkdownRemark___frontmatter___title'
-  | 'childMarkdownRemark___excerpt'
-  | 'childMarkdownRemark___rawMarkdownBody'
-  | 'childMarkdownRemark___html'
-  | 'childMarkdownRemark___htmlAst'
-  | 'childMarkdownRemark___excerptAst'
-  | 'childMarkdownRemark___headings'
-  | 'childMarkdownRemark___headings___id'
-  | 'childMarkdownRemark___headings___value'
-  | 'childMarkdownRemark___headings___depth'
-  | 'childMarkdownRemark___timeToRead'
-  | 'childMarkdownRemark___tableOfContents'
-  | 'childMarkdownRemark___wordCount___paragraphs'
-  | 'childMarkdownRemark___wordCount___sentences'
-  | 'childMarkdownRemark___wordCount___words'
-  | 'childMarkdownRemark___parent___id'
-  | 'childMarkdownRemark___parent___parent___id'
-  | 'childMarkdownRemark___parent___parent___children'
-  | 'childMarkdownRemark___parent___children'
-  | 'childMarkdownRemark___parent___children___id'
-  | 'childMarkdownRemark___parent___children___children'
-  | 'childMarkdownRemark___parent___internal___content'
-  | 'childMarkdownRemark___parent___internal___contentDigest'
-  | 'childMarkdownRemark___parent___internal___description'
-  | 'childMarkdownRemark___parent___internal___fieldOwners'
-  | 'childMarkdownRemark___parent___internal___ignoreType'
-  | 'childMarkdownRemark___parent___internal___mediaType'
-  | 'childMarkdownRemark___parent___internal___owner'
-  | 'childMarkdownRemark___parent___internal___type'
-  | 'childMarkdownRemark___children'
-  | 'childMarkdownRemark___children___id'
-  | 'childMarkdownRemark___children___parent___id'
-  | 'childMarkdownRemark___children___parent___children'
-  | 'childMarkdownRemark___children___children'
-  | 'childMarkdownRemark___children___children___id'
-  | 'childMarkdownRemark___children___children___children'
-  | 'childMarkdownRemark___children___internal___content'
-  | 'childMarkdownRemark___children___internal___contentDigest'
-  | 'childMarkdownRemark___children___internal___description'
-  | 'childMarkdownRemark___children___internal___fieldOwners'
-  | 'childMarkdownRemark___children___internal___ignoreType'
-  | 'childMarkdownRemark___children___internal___mediaType'
-  | 'childMarkdownRemark___children___internal___owner'
-  | 'childMarkdownRemark___children___internal___type'
-  | 'childMarkdownRemark___internal___content'
-  | 'childMarkdownRemark___internal___contentDigest'
-  | 'childMarkdownRemark___internal___description'
-  | 'childMarkdownRemark___internal___fieldOwners'
-  | 'childMarkdownRemark___internal___ignoreType'
-  | 'childMarkdownRemark___internal___mediaType'
-  | 'childMarkdownRemark___internal___owner'
-  | 'childMarkdownRemark___internal___type';
-
-export type PageFilterInput = {
-  id?: Maybe<StringQueryOperatorInput>;
-  parent?: Maybe<NodeFilterInput>;
-  children?: Maybe<NodeFilterListInput>;
-  internal?: Maybe<InternalFilterInput>;
-  image?: Maybe<FileFilterInput>;
-  title?: Maybe<StringQueryOperatorInput>;
-  content?: Maybe<StringQueryOperatorInput>;
-  createdAt?: Maybe<DateQueryOperatorInput>;
-  updatedAt?: Maybe<DateQueryOperatorInput>;
-  created_by?: Maybe<PageCreated_ByFilterInput>;
-  updated_by?: Maybe<PageUpdated_ByFilterInput>;
-  strapiId?: Maybe<StringQueryOperatorInput>;
-  childMarkdownRemark?: Maybe<MarkdownRemarkFilterInput>;
-};
-
-export type PageGroupConnection = {
-  totalCount: Scalars['Int'];
-  edges: Array<PageEdge>;
-  nodes: Array<Page>;
-  pageInfo: PageInfo;
-  field: Scalars['String'];
-  fieldValue?: Maybe<Scalars['String']>;
-};
-
 export type PageInfo = {
   currentPage: Scalars['Int'];
   hasPreviousPage: Scalars['Boolean'];
@@ -2541,43 +2276,6 @@ export type PageInfo = {
   pageCount: Scalars['Int'];
   perPage?: Maybe<Scalars['Int']>;
   totalCount: Scalars['Int'];
-};
-
-export type PageSortInput = {
-  fields?: Maybe<Array<Maybe<PageFieldsEnum>>>;
-  order?: Maybe<Array<Maybe<SortOrderEnum>>>;
-};
-
-export type PageUpdated_By = {
-  firstname?: Maybe<Scalars['String']>;
-  lastname?: Maybe<Scalars['String']>;
-  createdAt?: Maybe<Scalars['Date']>;
-  updatedAt?: Maybe<Scalars['Date']>;
-  id?: Maybe<Scalars['String']>;
-};
-
-
-export type PageUpdated_ByCreatedAtArgs = {
-  formatString?: Maybe<Scalars['String']>;
-  fromNow?: Maybe<Scalars['Boolean']>;
-  difference?: Maybe<Scalars['String']>;
-  locale?: Maybe<Scalars['String']>;
-};
-
-
-export type PageUpdated_ByUpdatedAtArgs = {
-  formatString?: Maybe<Scalars['String']>;
-  fromNow?: Maybe<Scalars['Boolean']>;
-  difference?: Maybe<Scalars['String']>;
-  locale?: Maybe<Scalars['String']>;
-};
-
-export type PageUpdated_ByFilterInput = {
-  firstname?: Maybe<StringQueryOperatorInput>;
-  lastname?: Maybe<StringQueryOperatorInput>;
-  createdAt?: Maybe<DateQueryOperatorInput>;
-  updatedAt?: Maybe<DateQueryOperatorInput>;
-  id?: Maybe<StringQueryOperatorInput>;
 };
 
 export type Potrace = {
@@ -2613,8 +2311,6 @@ export type Query = {
   allImageSharp: ImageSharpConnection;
   markdownRemark?: Maybe<MarkdownRemark>;
   allMarkdownRemark: MarkdownRemarkConnection;
-  page?: Maybe<Page>;
-  allPage: PageConnection;
   article?: Maybe<Article>;
   allArticle: ArticleConnection;
   strapiPage?: Maybe<StrapiPage>;
@@ -2826,31 +2522,6 @@ export type QueryAllMarkdownRemarkArgs = {
 };
 
 
-export type QueryPageArgs = {
-  id?: Maybe<StringQueryOperatorInput>;
-  parent?: Maybe<NodeFilterInput>;
-  children?: Maybe<NodeFilterListInput>;
-  internal?: Maybe<InternalFilterInput>;
-  image?: Maybe<FileFilterInput>;
-  title?: Maybe<StringQueryOperatorInput>;
-  content?: Maybe<StringQueryOperatorInput>;
-  createdAt?: Maybe<DateQueryOperatorInput>;
-  updatedAt?: Maybe<DateQueryOperatorInput>;
-  created_by?: Maybe<PageCreated_ByFilterInput>;
-  updated_by?: Maybe<PageUpdated_ByFilterInput>;
-  strapiId?: Maybe<StringQueryOperatorInput>;
-  childMarkdownRemark?: Maybe<MarkdownRemarkFilterInput>;
-};
-
-
-export type QueryAllPageArgs = {
-  filter?: Maybe<PageFilterInput>;
-  sort?: Maybe<PageSortInput>;
-  skip?: Maybe<Scalars['Int']>;
-  limit?: Maybe<Scalars['Int']>;
-};
-
-
 export type QueryArticleArgs = {
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
@@ -2866,6 +2537,7 @@ export type QueryArticleArgs = {
   category?: Maybe<ArticleCategoryFilterInput>;
   image?: Maybe<FileFilterInput>;
   tags?: Maybe<ArticleTagsFilterListInput>;
+  content_images?: Maybe<FileFilterListInput>;
   strapiId?: Maybe<StringQueryOperatorInput>;
   childMarkdownRemark?: Maybe<MarkdownRemarkFilterInput>;
 };
@@ -2891,6 +2563,7 @@ export type QueryStrapiPageArgs = {
   updatedAt?: Maybe<DateQueryOperatorInput>;
   created_by?: Maybe<StrapiPageCreated_ByFilterInput>;
   updated_by?: Maybe<StrapiPageUpdated_ByFilterInput>;
+  content_images?: Maybe<FileFilterListInput>;
   strapiId?: Maybe<StringQueryOperatorInput>;
 };
 
@@ -2941,6 +2614,7 @@ export type QueryStrapiArticleArgs = {
   category?: Maybe<StrapiArticleCategoryFilterInput>;
   image?: Maybe<FileFilterInput>;
   tags?: Maybe<StrapiArticleTagsFilterListInput>;
+  content_images?: Maybe<FileFilterListInput>;
   strapiId?: Maybe<StringQueryOperatorInput>;
 };
 
@@ -3509,7 +3183,6 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___pluginOptions___plugins___name'
   | 'pluginCreator___pluginOptions___plugins___version'
   | 'pluginCreator___pluginOptions___plugins___browserAPIs'
-  | 'pluginCreator___pluginOptions___plugins___ssrAPIs'
   | 'pluginCreator___pluginOptions___plugins___pluginFilepath'
   | 'pluginCreator___pluginOptions___trackingId'
   | 'pluginCreator___pluginOptions___head'
@@ -3539,27 +3212,6 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___pluginOptions___debug'
   | 'pluginCreator___pluginOptions___xfbml'
   | 'pluginCreator___pluginOptions___language'
-  | 'pluginCreator___pluginOptions___commonmark'
-  | 'pluginCreator___pluginOptions___footnotes'
-  | 'pluginCreator___pluginOptions___pedantic'
-  | 'pluginCreator___pluginOptions___gfm'
-  | 'pluginCreator___pluginOptions___classPrefix'
-  | 'pluginCreator___pluginOptions___showLineNumbers'
-  | 'pluginCreator___pluginOptions___noInlineHighlight'
-  | 'pluginCreator___pluginOptions___offsetY'
-  | 'pluginCreator___pluginOptions___className'
-  | 'pluginCreator___pluginOptions___active'
-  | 'pluginCreator___pluginOptions___size'
-  | 'pluginCreator___pluginOptions___class'
-  | 'pluginCreator___pluginOptions___styles___display'
-  | 'pluginCreator___pluginOptions___styles___margin'
-  | 'pluginCreator___pluginOptions___styles___margin_top'
-  | 'pluginCreator___pluginOptions___styles___position'
-  | 'pluginCreator___pluginOptions___styles___top'
-  | 'pluginCreator___pluginOptions___styles___width'
-  | 'pluginCreator___pluginOptions___maxWidth'
-  | 'pluginCreator___pluginOptions___width'
-  | 'pluginCreator___pluginOptions___height'
   | 'pluginCreator___pluginOptions___pathCheck'
   | 'pluginCreator___nodeAPIs'
   | 'pluginCreator___browserAPIs'
@@ -3752,20 +3404,7 @@ export type SitePluginFieldsEnum =
   | 'pluginOptions___plugins___id'
   | 'pluginOptions___plugins___name'
   | 'pluginOptions___plugins___version'
-  | 'pluginOptions___plugins___pluginOptions___classPrefix'
-  | 'pluginOptions___plugins___pluginOptions___showLineNumbers'
-  | 'pluginOptions___plugins___pluginOptions___noInlineHighlight'
-  | 'pluginOptions___plugins___pluginOptions___offsetY'
-  | 'pluginOptions___plugins___pluginOptions___icon'
-  | 'pluginOptions___plugins___pluginOptions___className'
-  | 'pluginOptions___plugins___pluginOptions___active'
-  | 'pluginOptions___plugins___pluginOptions___size'
-  | 'pluginOptions___plugins___pluginOptions___class'
-  | 'pluginOptions___plugins___pluginOptions___maxWidth'
-  | 'pluginOptions___plugins___pluginOptions___width'
-  | 'pluginOptions___plugins___pluginOptions___height'
   | 'pluginOptions___plugins___browserAPIs'
-  | 'pluginOptions___plugins___ssrAPIs'
   | 'pluginOptions___plugins___pluginFilepath'
   | 'pluginOptions___trackingId'
   | 'pluginOptions___head'
@@ -3774,6 +3413,8 @@ export type SitePluginFieldsEnum =
   | 'pluginOptions___apiURL'
   | 'pluginOptions___contentTypes'
   | 'pluginOptions___queryLimit'
+  | 'pluginOptions___markdownImages___typesToParse___article'
+  | 'pluginOptions___markdownImages___typesToParse___page'
   | 'pluginOptions___fileName'
   | 'pluginOptions___short_name'
   | 'pluginOptions___start_url'
@@ -3795,27 +3436,6 @@ export type SitePluginFieldsEnum =
   | 'pluginOptions___debug'
   | 'pluginOptions___xfbml'
   | 'pluginOptions___language'
-  | 'pluginOptions___commonmark'
-  | 'pluginOptions___footnotes'
-  | 'pluginOptions___pedantic'
-  | 'pluginOptions___gfm'
-  | 'pluginOptions___classPrefix'
-  | 'pluginOptions___showLineNumbers'
-  | 'pluginOptions___noInlineHighlight'
-  | 'pluginOptions___offsetY'
-  | 'pluginOptions___className'
-  | 'pluginOptions___active'
-  | 'pluginOptions___size'
-  | 'pluginOptions___class'
-  | 'pluginOptions___styles___display'
-  | 'pluginOptions___styles___margin'
-  | 'pluginOptions___styles___margin_top'
-  | 'pluginOptions___styles___position'
-  | 'pluginOptions___styles___top'
-  | 'pluginOptions___styles___width'
-  | 'pluginOptions___maxWidth'
-  | 'pluginOptions___width'
-  | 'pluginOptions___height'
   | 'pluginOptions___pathCheck'
   | 'nodeAPIs'
   | 'browserAPIs'
@@ -3937,6 +3557,7 @@ export type SitePluginPluginOptions = {
   apiURL?: Maybe<Scalars['String']>;
   contentTypes?: Maybe<Array<Maybe<Scalars['String']>>>;
   queryLimit?: Maybe<Scalars['Int']>;
+  markdownImages?: Maybe<SitePluginPluginOptionsMarkdownImages>;
   fileName?: Maybe<Scalars['String']>;
   short_name?: Maybe<Scalars['String']>;
   start_url?: Maybe<Scalars['String']>;
@@ -3958,22 +3579,6 @@ export type SitePluginPluginOptions = {
   debug?: Maybe<Scalars['Boolean']>;
   xfbml?: Maybe<Scalars['Boolean']>;
   language?: Maybe<Scalars['String']>;
-  commonmark?: Maybe<Scalars['Boolean']>;
-  footnotes?: Maybe<Scalars['Boolean']>;
-  pedantic?: Maybe<Scalars['Boolean']>;
-  gfm?: Maybe<Scalars['Boolean']>;
-  classPrefix?: Maybe<Scalars['String']>;
-  showLineNumbers?: Maybe<Scalars['Boolean']>;
-  noInlineHighlight?: Maybe<Scalars['Boolean']>;
-  offsetY?: Maybe<Scalars['String']>;
-  className?: Maybe<Scalars['String']>;
-  active?: Maybe<Scalars['Boolean']>;
-  size?: Maybe<Scalars['Int']>;
-  class?: Maybe<Scalars['String']>;
-  styles?: Maybe<SitePluginPluginOptionsStyles>;
-  maxWidth?: Maybe<Scalars['Int']>;
-  width?: Maybe<Scalars['Int']>;
-  height?: Maybe<Scalars['Int']>;
   pathCheck?: Maybe<Scalars['Boolean']>;
 };
 
@@ -3986,6 +3591,7 @@ export type SitePluginPluginOptionsFilterInput = {
   apiURL?: Maybe<StringQueryOperatorInput>;
   contentTypes?: Maybe<StringQueryOperatorInput>;
   queryLimit?: Maybe<IntQueryOperatorInput>;
+  markdownImages?: Maybe<SitePluginPluginOptionsMarkdownImagesFilterInput>;
   fileName?: Maybe<StringQueryOperatorInput>;
   short_name?: Maybe<StringQueryOperatorInput>;
   start_url?: Maybe<StringQueryOperatorInput>;
@@ -4007,23 +3613,25 @@ export type SitePluginPluginOptionsFilterInput = {
   debug?: Maybe<BooleanQueryOperatorInput>;
   xfbml?: Maybe<BooleanQueryOperatorInput>;
   language?: Maybe<StringQueryOperatorInput>;
-  commonmark?: Maybe<BooleanQueryOperatorInput>;
-  footnotes?: Maybe<BooleanQueryOperatorInput>;
-  pedantic?: Maybe<BooleanQueryOperatorInput>;
-  gfm?: Maybe<BooleanQueryOperatorInput>;
-  classPrefix?: Maybe<StringQueryOperatorInput>;
-  showLineNumbers?: Maybe<BooleanQueryOperatorInput>;
-  noInlineHighlight?: Maybe<BooleanQueryOperatorInput>;
-  offsetY?: Maybe<StringQueryOperatorInput>;
-  className?: Maybe<StringQueryOperatorInput>;
-  active?: Maybe<BooleanQueryOperatorInput>;
-  size?: Maybe<IntQueryOperatorInput>;
-  class?: Maybe<StringQueryOperatorInput>;
-  styles?: Maybe<SitePluginPluginOptionsStylesFilterInput>;
-  maxWidth?: Maybe<IntQueryOperatorInput>;
-  width?: Maybe<IntQueryOperatorInput>;
-  height?: Maybe<IntQueryOperatorInput>;
   pathCheck?: Maybe<BooleanQueryOperatorInput>;
+};
+
+export type SitePluginPluginOptionsMarkdownImages = {
+  typesToParse?: Maybe<SitePluginPluginOptionsMarkdownImagesTypesToParse>;
+};
+
+export type SitePluginPluginOptionsMarkdownImagesFilterInput = {
+  typesToParse?: Maybe<SitePluginPluginOptionsMarkdownImagesTypesToParseFilterInput>;
+};
+
+export type SitePluginPluginOptionsMarkdownImagesTypesToParse = {
+  article?: Maybe<Array<Maybe<Scalars['String']>>>;
+  page?: Maybe<Array<Maybe<Scalars['String']>>>;
+};
+
+export type SitePluginPluginOptionsMarkdownImagesTypesToParseFilterInput = {
+  article?: Maybe<StringQueryOperatorInput>;
+  page?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SitePluginPluginOptionsPlugins = {
@@ -4031,9 +3639,7 @@ export type SitePluginPluginOptionsPlugins = {
   id?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
   version?: Maybe<Scalars['String']>;
-  pluginOptions?: Maybe<SitePluginPluginOptionsPluginsPluginOptions>;
   browserAPIs?: Maybe<Array<Maybe<Scalars['String']>>>;
-  ssrAPIs?: Maybe<Array<Maybe<Scalars['String']>>>;
   pluginFilepath?: Maybe<Scalars['String']>;
 };
 
@@ -4042,82 +3648,12 @@ export type SitePluginPluginOptionsPluginsFilterInput = {
   id?: Maybe<StringQueryOperatorInput>;
   name?: Maybe<StringQueryOperatorInput>;
   version?: Maybe<StringQueryOperatorInput>;
-  pluginOptions?: Maybe<SitePluginPluginOptionsPluginsPluginOptionsFilterInput>;
   browserAPIs?: Maybe<StringQueryOperatorInput>;
-  ssrAPIs?: Maybe<StringQueryOperatorInput>;
   pluginFilepath?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SitePluginPluginOptionsPluginsFilterListInput = {
   elemMatch?: Maybe<SitePluginPluginOptionsPluginsFilterInput>;
-};
-
-export type SitePluginPluginOptionsPluginsPluginOptions = {
-  classPrefix?: Maybe<Scalars['String']>;
-  showLineNumbers?: Maybe<Scalars['Boolean']>;
-  noInlineHighlight?: Maybe<Scalars['Boolean']>;
-  offsetY?: Maybe<Scalars['String']>;
-  icon?: Maybe<Scalars['String']>;
-  className?: Maybe<Scalars['String']>;
-  active?: Maybe<Scalars['Boolean']>;
-  size?: Maybe<Scalars['Int']>;
-  class?: Maybe<Scalars['String']>;
-  styles?: Maybe<SitePluginPluginOptionsPluginsPluginOptionsStyles>;
-  maxWidth?: Maybe<Scalars['Int']>;
-  width?: Maybe<Scalars['Int']>;
-  height?: Maybe<Scalars['Int']>;
-};
-
-export type SitePluginPluginOptionsPluginsPluginOptionsFilterInput = {
-  classPrefix?: Maybe<StringQueryOperatorInput>;
-  showLineNumbers?: Maybe<BooleanQueryOperatorInput>;
-  noInlineHighlight?: Maybe<BooleanQueryOperatorInput>;
-  offsetY?: Maybe<StringQueryOperatorInput>;
-  icon?: Maybe<StringQueryOperatorInput>;
-  className?: Maybe<StringQueryOperatorInput>;
-  active?: Maybe<BooleanQueryOperatorInput>;
-  size?: Maybe<IntQueryOperatorInput>;
-  class?: Maybe<StringQueryOperatorInput>;
-  styles?: Maybe<SitePluginPluginOptionsPluginsPluginOptionsStylesFilterInput>;
-  maxWidth?: Maybe<IntQueryOperatorInput>;
-  width?: Maybe<IntQueryOperatorInput>;
-  height?: Maybe<IntQueryOperatorInput>;
-};
-
-export type SitePluginPluginOptionsPluginsPluginOptionsStyles = {
-  display?: Maybe<Scalars['String']>;
-  margin?: Maybe<Scalars['String']>;
-  margin_top?: Maybe<Scalars['String']>;
-  position?: Maybe<Scalars['String']>;
-  top?: Maybe<Scalars['String']>;
-  width?: Maybe<Scalars['String']>;
-};
-
-export type SitePluginPluginOptionsPluginsPluginOptionsStylesFilterInput = {
-  display?: Maybe<StringQueryOperatorInput>;
-  margin?: Maybe<StringQueryOperatorInput>;
-  margin_top?: Maybe<StringQueryOperatorInput>;
-  position?: Maybe<StringQueryOperatorInput>;
-  top?: Maybe<StringQueryOperatorInput>;
-  width?: Maybe<StringQueryOperatorInput>;
-};
-
-export type SitePluginPluginOptionsStyles = {
-  display?: Maybe<Scalars['String']>;
-  margin?: Maybe<Scalars['String']>;
-  margin_top?: Maybe<Scalars['String']>;
-  position?: Maybe<Scalars['String']>;
-  top?: Maybe<Scalars['String']>;
-  width?: Maybe<Scalars['String']>;
-};
-
-export type SitePluginPluginOptionsStylesFilterInput = {
-  display?: Maybe<StringQueryOperatorInput>;
-  margin?: Maybe<StringQueryOperatorInput>;
-  margin_top?: Maybe<StringQueryOperatorInput>;
-  position?: Maybe<StringQueryOperatorInput>;
-  top?: Maybe<StringQueryOperatorInput>;
-  width?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SitePluginSortInput = {
@@ -4165,6 +3701,7 @@ export type StrapiArticle = Node & {
   category?: Maybe<StrapiArticleCategory>;
   image?: Maybe<File>;
   tags?: Maybe<Array<Maybe<StrapiArticleTags>>>;
+  content_images?: Maybe<Array<Maybe<File>>>;
   strapiId?: Maybe<Scalars['String']>;
 };
 
@@ -4540,6 +4077,146 @@ export type StrapiArticleFieldsEnum =
   | 'tags___created_by'
   | 'tags___updated_by'
   | 'tags___id'
+  | 'content_images'
+  | 'content_images___sourceInstanceName'
+  | 'content_images___absolutePath'
+  | 'content_images___relativePath'
+  | 'content_images___extension'
+  | 'content_images___size'
+  | 'content_images___prettySize'
+  | 'content_images___modifiedTime'
+  | 'content_images___accessTime'
+  | 'content_images___changeTime'
+  | 'content_images___birthTime'
+  | 'content_images___root'
+  | 'content_images___dir'
+  | 'content_images___base'
+  | 'content_images___ext'
+  | 'content_images___name'
+  | 'content_images___relativeDirectory'
+  | 'content_images___dev'
+  | 'content_images___mode'
+  | 'content_images___nlink'
+  | 'content_images___uid'
+  | 'content_images___gid'
+  | 'content_images___rdev'
+  | 'content_images___ino'
+  | 'content_images___atimeMs'
+  | 'content_images___mtimeMs'
+  | 'content_images___ctimeMs'
+  | 'content_images___atime'
+  | 'content_images___mtime'
+  | 'content_images___ctime'
+  | 'content_images___birthtime'
+  | 'content_images___birthtimeMs'
+  | 'content_images___blksize'
+  | 'content_images___blocks'
+  | 'content_images___publicURL'
+  | 'content_images___childImageSharp___fixed___base64'
+  | 'content_images___childImageSharp___fixed___tracedSVG'
+  | 'content_images___childImageSharp___fixed___aspectRatio'
+  | 'content_images___childImageSharp___fixed___width'
+  | 'content_images___childImageSharp___fixed___height'
+  | 'content_images___childImageSharp___fixed___src'
+  | 'content_images___childImageSharp___fixed___srcSet'
+  | 'content_images___childImageSharp___fixed___srcWebp'
+  | 'content_images___childImageSharp___fixed___srcSetWebp'
+  | 'content_images___childImageSharp___fixed___originalName'
+  | 'content_images___childImageSharp___resolutions___base64'
+  | 'content_images___childImageSharp___resolutions___tracedSVG'
+  | 'content_images___childImageSharp___resolutions___aspectRatio'
+  | 'content_images___childImageSharp___resolutions___width'
+  | 'content_images___childImageSharp___resolutions___height'
+  | 'content_images___childImageSharp___resolutions___src'
+  | 'content_images___childImageSharp___resolutions___srcSet'
+  | 'content_images___childImageSharp___resolutions___srcWebp'
+  | 'content_images___childImageSharp___resolutions___srcSetWebp'
+  | 'content_images___childImageSharp___resolutions___originalName'
+  | 'content_images___childImageSharp___fluid___base64'
+  | 'content_images___childImageSharp___fluid___tracedSVG'
+  | 'content_images___childImageSharp___fluid___aspectRatio'
+  | 'content_images___childImageSharp___fluid___src'
+  | 'content_images___childImageSharp___fluid___srcSet'
+  | 'content_images___childImageSharp___fluid___srcWebp'
+  | 'content_images___childImageSharp___fluid___srcSetWebp'
+  | 'content_images___childImageSharp___fluid___sizes'
+  | 'content_images___childImageSharp___fluid___originalImg'
+  | 'content_images___childImageSharp___fluid___originalName'
+  | 'content_images___childImageSharp___fluid___presentationWidth'
+  | 'content_images___childImageSharp___fluid___presentationHeight'
+  | 'content_images___childImageSharp___sizes___base64'
+  | 'content_images___childImageSharp___sizes___tracedSVG'
+  | 'content_images___childImageSharp___sizes___aspectRatio'
+  | 'content_images___childImageSharp___sizes___src'
+  | 'content_images___childImageSharp___sizes___srcSet'
+  | 'content_images___childImageSharp___sizes___srcWebp'
+  | 'content_images___childImageSharp___sizes___srcSetWebp'
+  | 'content_images___childImageSharp___sizes___sizes'
+  | 'content_images___childImageSharp___sizes___originalImg'
+  | 'content_images___childImageSharp___sizes___originalName'
+  | 'content_images___childImageSharp___sizes___presentationWidth'
+  | 'content_images___childImageSharp___sizes___presentationHeight'
+  | 'content_images___childImageSharp___original___width'
+  | 'content_images___childImageSharp___original___height'
+  | 'content_images___childImageSharp___original___src'
+  | 'content_images___childImageSharp___resize___src'
+  | 'content_images___childImageSharp___resize___tracedSVG'
+  | 'content_images___childImageSharp___resize___width'
+  | 'content_images___childImageSharp___resize___height'
+  | 'content_images___childImageSharp___resize___aspectRatio'
+  | 'content_images___childImageSharp___resize___originalName'
+  | 'content_images___childImageSharp___id'
+  | 'content_images___childImageSharp___parent___id'
+  | 'content_images___childImageSharp___parent___children'
+  | 'content_images___childImageSharp___children'
+  | 'content_images___childImageSharp___children___id'
+  | 'content_images___childImageSharp___children___children'
+  | 'content_images___childImageSharp___internal___content'
+  | 'content_images___childImageSharp___internal___contentDigest'
+  | 'content_images___childImageSharp___internal___description'
+  | 'content_images___childImageSharp___internal___fieldOwners'
+  | 'content_images___childImageSharp___internal___ignoreType'
+  | 'content_images___childImageSharp___internal___mediaType'
+  | 'content_images___childImageSharp___internal___owner'
+  | 'content_images___childImageSharp___internal___type'
+  | 'content_images___id'
+  | 'content_images___parent___id'
+  | 'content_images___parent___parent___id'
+  | 'content_images___parent___parent___children'
+  | 'content_images___parent___children'
+  | 'content_images___parent___children___id'
+  | 'content_images___parent___children___children'
+  | 'content_images___parent___internal___content'
+  | 'content_images___parent___internal___contentDigest'
+  | 'content_images___parent___internal___description'
+  | 'content_images___parent___internal___fieldOwners'
+  | 'content_images___parent___internal___ignoreType'
+  | 'content_images___parent___internal___mediaType'
+  | 'content_images___parent___internal___owner'
+  | 'content_images___parent___internal___type'
+  | 'content_images___children'
+  | 'content_images___children___id'
+  | 'content_images___children___parent___id'
+  | 'content_images___children___parent___children'
+  | 'content_images___children___children'
+  | 'content_images___children___children___id'
+  | 'content_images___children___children___children'
+  | 'content_images___children___internal___content'
+  | 'content_images___children___internal___contentDigest'
+  | 'content_images___children___internal___description'
+  | 'content_images___children___internal___fieldOwners'
+  | 'content_images___children___internal___ignoreType'
+  | 'content_images___children___internal___mediaType'
+  | 'content_images___children___internal___owner'
+  | 'content_images___children___internal___type'
+  | 'content_images___internal___content'
+  | 'content_images___internal___contentDigest'
+  | 'content_images___internal___description'
+  | 'content_images___internal___fieldOwners'
+  | 'content_images___internal___ignoreType'
+  | 'content_images___internal___mediaType'
+  | 'content_images___internal___owner'
+  | 'content_images___internal___type'
   | 'strapiId';
 
 export type StrapiArticleFilterInput = {
@@ -4557,6 +4234,7 @@ export type StrapiArticleFilterInput = {
   category?: Maybe<StrapiArticleCategoryFilterInput>;
   image?: Maybe<FileFilterInput>;
   tags?: Maybe<StrapiArticleTagsFilterListInput>;
+  content_images?: Maybe<FileFilterListInput>;
   strapiId?: Maybe<StringQueryOperatorInput>;
 };
 
@@ -5023,6 +4701,7 @@ export type StrapiPage = Node & {
   updatedAt?: Maybe<Scalars['Date']>;
   created_by?: Maybe<StrapiPageCreated_By>;
   updated_by?: Maybe<StrapiPageUpdated_By>;
+  content_images?: Maybe<Array<Maybe<File>>>;
   strapiId?: Maybe<Scalars['String']>;
 };
 
@@ -5341,6 +5020,146 @@ export type StrapiPageFieldsEnum =
   | 'updated_by___createdAt'
   | 'updated_by___updatedAt'
   | 'updated_by___id'
+  | 'content_images'
+  | 'content_images___sourceInstanceName'
+  | 'content_images___absolutePath'
+  | 'content_images___relativePath'
+  | 'content_images___extension'
+  | 'content_images___size'
+  | 'content_images___prettySize'
+  | 'content_images___modifiedTime'
+  | 'content_images___accessTime'
+  | 'content_images___changeTime'
+  | 'content_images___birthTime'
+  | 'content_images___root'
+  | 'content_images___dir'
+  | 'content_images___base'
+  | 'content_images___ext'
+  | 'content_images___name'
+  | 'content_images___relativeDirectory'
+  | 'content_images___dev'
+  | 'content_images___mode'
+  | 'content_images___nlink'
+  | 'content_images___uid'
+  | 'content_images___gid'
+  | 'content_images___rdev'
+  | 'content_images___ino'
+  | 'content_images___atimeMs'
+  | 'content_images___mtimeMs'
+  | 'content_images___ctimeMs'
+  | 'content_images___atime'
+  | 'content_images___mtime'
+  | 'content_images___ctime'
+  | 'content_images___birthtime'
+  | 'content_images___birthtimeMs'
+  | 'content_images___blksize'
+  | 'content_images___blocks'
+  | 'content_images___publicURL'
+  | 'content_images___childImageSharp___fixed___base64'
+  | 'content_images___childImageSharp___fixed___tracedSVG'
+  | 'content_images___childImageSharp___fixed___aspectRatio'
+  | 'content_images___childImageSharp___fixed___width'
+  | 'content_images___childImageSharp___fixed___height'
+  | 'content_images___childImageSharp___fixed___src'
+  | 'content_images___childImageSharp___fixed___srcSet'
+  | 'content_images___childImageSharp___fixed___srcWebp'
+  | 'content_images___childImageSharp___fixed___srcSetWebp'
+  | 'content_images___childImageSharp___fixed___originalName'
+  | 'content_images___childImageSharp___resolutions___base64'
+  | 'content_images___childImageSharp___resolutions___tracedSVG'
+  | 'content_images___childImageSharp___resolutions___aspectRatio'
+  | 'content_images___childImageSharp___resolutions___width'
+  | 'content_images___childImageSharp___resolutions___height'
+  | 'content_images___childImageSharp___resolutions___src'
+  | 'content_images___childImageSharp___resolutions___srcSet'
+  | 'content_images___childImageSharp___resolutions___srcWebp'
+  | 'content_images___childImageSharp___resolutions___srcSetWebp'
+  | 'content_images___childImageSharp___resolutions___originalName'
+  | 'content_images___childImageSharp___fluid___base64'
+  | 'content_images___childImageSharp___fluid___tracedSVG'
+  | 'content_images___childImageSharp___fluid___aspectRatio'
+  | 'content_images___childImageSharp___fluid___src'
+  | 'content_images___childImageSharp___fluid___srcSet'
+  | 'content_images___childImageSharp___fluid___srcWebp'
+  | 'content_images___childImageSharp___fluid___srcSetWebp'
+  | 'content_images___childImageSharp___fluid___sizes'
+  | 'content_images___childImageSharp___fluid___originalImg'
+  | 'content_images___childImageSharp___fluid___originalName'
+  | 'content_images___childImageSharp___fluid___presentationWidth'
+  | 'content_images___childImageSharp___fluid___presentationHeight'
+  | 'content_images___childImageSharp___sizes___base64'
+  | 'content_images___childImageSharp___sizes___tracedSVG'
+  | 'content_images___childImageSharp___sizes___aspectRatio'
+  | 'content_images___childImageSharp___sizes___src'
+  | 'content_images___childImageSharp___sizes___srcSet'
+  | 'content_images___childImageSharp___sizes___srcWebp'
+  | 'content_images___childImageSharp___sizes___srcSetWebp'
+  | 'content_images___childImageSharp___sizes___sizes'
+  | 'content_images___childImageSharp___sizes___originalImg'
+  | 'content_images___childImageSharp___sizes___originalName'
+  | 'content_images___childImageSharp___sizes___presentationWidth'
+  | 'content_images___childImageSharp___sizes___presentationHeight'
+  | 'content_images___childImageSharp___original___width'
+  | 'content_images___childImageSharp___original___height'
+  | 'content_images___childImageSharp___original___src'
+  | 'content_images___childImageSharp___resize___src'
+  | 'content_images___childImageSharp___resize___tracedSVG'
+  | 'content_images___childImageSharp___resize___width'
+  | 'content_images___childImageSharp___resize___height'
+  | 'content_images___childImageSharp___resize___aspectRatio'
+  | 'content_images___childImageSharp___resize___originalName'
+  | 'content_images___childImageSharp___id'
+  | 'content_images___childImageSharp___parent___id'
+  | 'content_images___childImageSharp___parent___children'
+  | 'content_images___childImageSharp___children'
+  | 'content_images___childImageSharp___children___id'
+  | 'content_images___childImageSharp___children___children'
+  | 'content_images___childImageSharp___internal___content'
+  | 'content_images___childImageSharp___internal___contentDigest'
+  | 'content_images___childImageSharp___internal___description'
+  | 'content_images___childImageSharp___internal___fieldOwners'
+  | 'content_images___childImageSharp___internal___ignoreType'
+  | 'content_images___childImageSharp___internal___mediaType'
+  | 'content_images___childImageSharp___internal___owner'
+  | 'content_images___childImageSharp___internal___type'
+  | 'content_images___id'
+  | 'content_images___parent___id'
+  | 'content_images___parent___parent___id'
+  | 'content_images___parent___parent___children'
+  | 'content_images___parent___children'
+  | 'content_images___parent___children___id'
+  | 'content_images___parent___children___children'
+  | 'content_images___parent___internal___content'
+  | 'content_images___parent___internal___contentDigest'
+  | 'content_images___parent___internal___description'
+  | 'content_images___parent___internal___fieldOwners'
+  | 'content_images___parent___internal___ignoreType'
+  | 'content_images___parent___internal___mediaType'
+  | 'content_images___parent___internal___owner'
+  | 'content_images___parent___internal___type'
+  | 'content_images___children'
+  | 'content_images___children___id'
+  | 'content_images___children___parent___id'
+  | 'content_images___children___parent___children'
+  | 'content_images___children___children'
+  | 'content_images___children___children___id'
+  | 'content_images___children___children___children'
+  | 'content_images___children___internal___content'
+  | 'content_images___children___internal___contentDigest'
+  | 'content_images___children___internal___description'
+  | 'content_images___children___internal___fieldOwners'
+  | 'content_images___children___internal___ignoreType'
+  | 'content_images___children___internal___mediaType'
+  | 'content_images___children___internal___owner'
+  | 'content_images___children___internal___type'
+  | 'content_images___internal___content'
+  | 'content_images___internal___contentDigest'
+  | 'content_images___internal___description'
+  | 'content_images___internal___fieldOwners'
+  | 'content_images___internal___ignoreType'
+  | 'content_images___internal___mediaType'
+  | 'content_images___internal___owner'
+  | 'content_images___internal___type'
   | 'strapiId';
 
 export type StrapiPageFilterInput = {
@@ -5355,6 +5174,7 @@ export type StrapiPageFilterInput = {
   updatedAt?: Maybe<DateQueryOperatorInput>;
   created_by?: Maybe<StrapiPageCreated_ByFilterInput>;
   updated_by?: Maybe<StrapiPageUpdated_ByFilterInput>;
+  content_images?: Maybe<FileFilterListInput>;
   strapiId?: Maybe<StringQueryOperatorInput>;
 };
 
@@ -5426,30 +5246,25 @@ export type Unnamed_2_Query = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSit
 export type Unnamed_3_QueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type Unnamed_3_Query = { allStrapiCategory: { edges: Array<{ node: Pick<StrapiCategory, 'strapiId' | 'name'> }> } };
+export type Unnamed_3_Query = { pages: { edges: Array<{ node: Pick<StrapiPage, 'strapiId' | 'title'> }> } };
 
 export type Unnamed_4_QueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type Unnamed_4_Query = { pages: { edges: Array<{ node: Pick<StrapiPage, 'strapiId' | 'title'> }> } };
+export type Unnamed_4_Query = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'title' | 'description' | 'author'>> }> };
 
 export type Unnamed_5_QueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type Unnamed_5_Query = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'title' | 'description' | 'author'>> }> };
+export type Unnamed_5_Query = { allArticle: { edges: Array<{ node: (
+        Pick<Article, 'strapiId' | 'title' | 'published_at'>
+        & { category?: Maybe<Pick<ArticleCategory, 'id' | 'name'>>, image?: Maybe<Pick<File, 'publicURL'>>, childMarkdownRemark?: Maybe<Pick<MarkdownRemark, 'excerpt'>> }
+      ) }> }, site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'title' | 'description' | 'concept'>> }> };
 
 export type Unnamed_6_QueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type Unnamed_6_Query = { allArticle: { edges: Array<{ node: (
-        Pick<Article, 'strapiId' | 'title' | 'published_at'>
-        & { category?: Maybe<Pick<ArticleCategory, 'id' | 'name'>>, image?: Maybe<Pick<File, 'publicURL'>>, childMarkdownRemark?: Maybe<Pick<MarkdownRemark, 'html' | 'excerpt'>> }
-      ) }> }, site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'title' | 'description' | 'concept'>> }> };
-
-export type Unnamed_7_QueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type Unnamed_7_Query = { site?: Maybe<Pick<Site, 'buildTime'>> };
+export type Unnamed_6_Query = { site?: Maybe<Pick<Site, 'buildTime'>> };
 
 export type ArticleQueryQueryVariables = Exact<{
   id: Scalars['String'];
@@ -5458,7 +5273,10 @@ export type ArticleQueryQueryVariables = Exact<{
 
 export type ArticleQueryQuery = { article?: Maybe<(
     Pick<Article, 'strapiId' | 'title' | 'content' | 'published_at'>
-    & { childMarkdownRemark?: Maybe<Pick<MarkdownRemark, 'html'>>, image?: Maybe<Pick<File, 'publicURL'>> }
+    & { content_images?: Maybe<Array<Maybe<(
+      Pick<File, 'base'>
+      & { childImageSharp?: Maybe<{ original?: Maybe<Pick<ImageSharpOriginal, 'src'>>, fluid?: Maybe<Pick<ImageSharpFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>> }> }
+    )>>>, image?: Maybe<Pick<File, 'publicURL'>> }
   )> };
 
 export type CategoryQueryVariables = Exact<{
@@ -5468,7 +5286,7 @@ export type CategoryQueryVariables = Exact<{
 
 export type CategoryQuery = { articles: { edges: Array<{ node: (
         Pick<Article, 'strapiId' | 'title' | 'published_at'>
-        & { category?: Maybe<Pick<ArticleCategory, 'id' | 'name'>>, childMarkdownRemark?: Maybe<Pick<MarkdownRemark, 'html' | 'excerpt'>>, image?: Maybe<Pick<File, 'publicURL'>> }
+        & { category?: Maybe<Pick<ArticleCategory, 'id' | 'name'>>, childMarkdownRemark?: Maybe<Pick<MarkdownRemark, 'excerpt'>>, image?: Maybe<Pick<File, 'publicURL'>> }
       ) }> }, category?: Maybe<Pick<StrapiCategory, 'name'>> };
 
 export type PageQueryQueryVariables = Exact<{
@@ -5476,57 +5294,10 @@ export type PageQueryQueryVariables = Exact<{
 }>;
 
 
-export type PageQueryQuery = { page?: Maybe<(
-    Pick<Page, 'strapiId' | 'title' | 'content'>
-    & { childMarkdownRemark?: Maybe<Pick<MarkdownRemark, 'html'>>, image?: Maybe<Pick<File, 'publicURL'>> }
+export type PageQueryQuery = { strapiPage?: Maybe<(
+    Pick<StrapiPage, 'strapiId' | 'title' | 'content'>
+    & { content_images?: Maybe<Array<Maybe<(
+      Pick<File, 'base'>
+      & { childImageSharp?: Maybe<{ original?: Maybe<Pick<ImageSharpOriginal, 'src'>>, fluid?: Maybe<Pick<ImageSharpFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>> }> }
+    )>>>, image?: Maybe<Pick<File, 'publicURL'>> }
   )> };
-
-export type GatsbyImageSharpFixedFragment = Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
-
-export type GatsbyImageSharpFixed_TracedSvgFragment = Pick<ImageSharpFixed, 'tracedSVG' | 'width' | 'height' | 'src' | 'srcSet'>;
-
-export type GatsbyImageSharpFixed_WithWebpFragment = Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp'>;
-
-export type GatsbyImageSharpFixed_WithWebp_TracedSvgFragment = Pick<ImageSharpFixed, 'tracedSVG' | 'width' | 'height' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp'>;
-
-export type GatsbyImageSharpFixed_NoBase64Fragment = Pick<ImageSharpFixed, 'width' | 'height' | 'src' | 'srcSet'>;
-
-export type GatsbyImageSharpFixed_WithWebp_NoBase64Fragment = Pick<ImageSharpFixed, 'width' | 'height' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp'>;
-
-export type GatsbyImageSharpFluidFragment = Pick<ImageSharpFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>;
-
-export type GatsbyImageSharpFluidLimitPresentationSizeFragment = { maxHeight: ImageSharpFluid['presentationHeight'], maxWidth: ImageSharpFluid['presentationWidth'] };
-
-export type GatsbyImageSharpFluid_TracedSvgFragment = Pick<ImageSharpFluid, 'tracedSVG' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>;
-
-export type GatsbyImageSharpFluid_WithWebpFragment = Pick<ImageSharpFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>;
-
-export type GatsbyImageSharpFluid_WithWebp_TracedSvgFragment = Pick<ImageSharpFluid, 'tracedSVG' | 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>;
-
-export type GatsbyImageSharpFluid_NoBase64Fragment = Pick<ImageSharpFluid, 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>;
-
-export type GatsbyImageSharpFluid_WithWebp_NoBase64Fragment = Pick<ImageSharpFluid, 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>;
-
-export type GatsbyImageSharpResolutionsFragment = Pick<ImageSharpResolutions, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
-
-export type GatsbyImageSharpResolutions_TracedSvgFragment = Pick<ImageSharpResolutions, 'tracedSVG' | 'width' | 'height' | 'src' | 'srcSet'>;
-
-export type GatsbyImageSharpResolutions_WithWebpFragment = Pick<ImageSharpResolutions, 'base64' | 'width' | 'height' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp'>;
-
-export type GatsbyImageSharpResolutions_WithWebp_TracedSvgFragment = Pick<ImageSharpResolutions, 'tracedSVG' | 'width' | 'height' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp'>;
-
-export type GatsbyImageSharpResolutions_NoBase64Fragment = Pick<ImageSharpResolutions, 'width' | 'height' | 'src' | 'srcSet'>;
-
-export type GatsbyImageSharpResolutions_WithWebp_NoBase64Fragment = Pick<ImageSharpResolutions, 'width' | 'height' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp'>;
-
-export type GatsbyImageSharpSizesFragment = Pick<ImageSharpSizes, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>;
-
-export type GatsbyImageSharpSizes_TracedSvgFragment = Pick<ImageSharpSizes, 'tracedSVG' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>;
-
-export type GatsbyImageSharpSizes_WithWebpFragment = Pick<ImageSharpSizes, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>;
-
-export type GatsbyImageSharpSizes_WithWebp_TracedSvgFragment = Pick<ImageSharpSizes, 'tracedSVG' | 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>;
-
-export type GatsbyImageSharpSizes_NoBase64Fragment = Pick<ImageSharpSizes, 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>;
-
-export type GatsbyImageSharpSizes_WithWebp_NoBase64Fragment = Pick<ImageSharpSizes, 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>;
