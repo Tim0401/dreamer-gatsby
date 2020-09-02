@@ -9,7 +9,7 @@ import { StrapiSidebarEdge } from "../../types/graphql-types"
 const useStyles = makeStyles({});
 
 export default function SideBar() {
-  const classes = useStyles();ß
+  const classes = useStyles();
   return (
     <StaticQuery
       query={graphql`
