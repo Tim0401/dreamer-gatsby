@@ -91,7 +91,7 @@ const Article = ({ data }: IProps) => {
         <Box mt={2}>
           <Grid container spacing={1}>
             <Grid item xs={12} md={8} lg={9}>
-              <RawMarkdown source={article.content} contentImages={article.content_images} />
+              <RawMarkdown source={article.content} fluidImages={article.content_images} />
               <p>
                 <Moment format="MMM Do YYYY">{article.published_at}</Moment>
               </p>

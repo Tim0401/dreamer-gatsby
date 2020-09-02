@@ -88,7 +88,7 @@ const Page = ({ data }: IProps) => {
         <Box mt={2}>
           <Grid container spacing={1}>
             <Grid item xs={12} md={8} lg={9}>
-              <RawMarkdown source={page.content} contentImages={page.content_images} />
+              <RawMarkdown source={page.content} fluidImages={page.content_images} />
             </Grid>
             <Grid item xs={12} md={4} lg={3}>
               <SideBar />

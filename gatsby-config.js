@@ -40,12 +40,14 @@ module.exports = {
 					"article",
 					"category",
 					"page",
+					"sidebar",
 				],
 				queryLimit: 1000,
 				markdownImages: {
 					typesToParse: {
 						article: ['content'],
-						page: ['content']
+						page: ['content'],
+						sidebar: ['content']
 					}
 				}
 			},
