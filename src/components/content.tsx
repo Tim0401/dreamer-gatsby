@@ -183,7 +183,7 @@ export default function Content(props: Props) {
                 <List style={{ height: "64px", paddingTop: "0", paddingBottom: "0" }}>
                   <Link to="/">
                     <ListItem button className={classes.title} key={"title"}>
-                      <Typography variant="h6" noWrap style={{ color: "white", fontFamily: "Staatliches" }}>
+                      <Typography variant="h5" noWrap style={{ color: "white", fontFamily: "Staatliches" }}>
                         {data.site.siteMetadata.title}
                       </Typography>
                     </ListItem>

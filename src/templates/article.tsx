@@ -1,8 +1,9 @@
 import React from "react"
 import { graphql } from "gatsby"
+import styled from "styled-components";
 
-import ReactMarkdown from "react-markdown"
 import Moment from "react-moment"
+// @ts-ignore
 import noimage from '../images/noimage.png';
 
 import Layout from "../components/layout"
@@ -25,6 +26,18 @@ interface IBProps {
 interface IProps {
   data: IBProps;
 }
+
+const Content = styled.div`
+
+h1, h2, h3, h4, h5, h6 {
+	margin: 0 0 20px 0 !important;
+}
+
+*+h1, *+h2, *+h3, *+h4, *+h5, *+h6 {
+    margin: 40px 0 20px 0 !important;
+}
+
+`;
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -83,23 +96,25 @@ const Article = ({ data }: IProps) => {
             data-uk-img
           >
             <Box className={classes.bgBox}>
-              <Typography variant="h2">{article.title}</Typography>
+              <Typography variant="h1">{article.title}</Typography>
             </Box>
           </div>
         </Box>
         <Divider />
         <Box mt={2}>
-          <Grid container spacing={1}>
-            <Grid item xs={12} md={8} lg={9}>
-              <RawMarkdown source={article.content} fluidImages={article.content_images} />
-              <p>
-                <Moment format="MMM Do YYYY">{article.published_at}</Moment>
-              </p>
+          <Content>
+            <Grid container spacing={1}>
+              <Grid item xs={12} md={8} lg={9}>
+                <RawMarkdown source={article.content} fluidImages={article.content_images} />
+                <p>
+                  <Moment format="MMM Do YYYY">{article.published_at}</Moment>
+                </p>
+              </Grid>
+              <Grid item xs={12} md={4} lg={3}>
+                <SideBar />
+              </Grid>
             </Grid>
-            <Grid item xs={12} md={4} lg={3}>
-              <SideBar />
-            </Grid>
-          </Grid>
+          </Content>
         </Box>
       </Box>
     </Layout>

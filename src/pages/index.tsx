@@ -72,7 +72,7 @@ const IndexPage = () => {
               <Typography variant="h1" noWrap className={classes.title}>
                 {data.site.siteMetadata.title}
               </Typography>
-              <Typography variant="body2">
+              <Typography variant="body1">
                 {data.site.siteMetadata.description}
               </Typography>
             </Box>

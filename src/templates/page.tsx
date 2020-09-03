@@ -80,7 +80,7 @@ const Page = ({ data }: IProps) => {
             data-uk-img
           >
             <Box className={classes.bgBox}>
-              <Typography variant="h2">{page.title}</Typography>
+              <Typography variant="h1">{page.title}</Typography>
             </Box>
           </div>
         </Box>

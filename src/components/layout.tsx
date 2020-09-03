@@ -3,7 +3,6 @@ import PropTypes from "prop-types"
 import { ThemeProvider, createMuiTheme, responsiveFontSizes, ListItemText } from "@material-ui/core";
 import blue from '@material-ui/core/colors/blue';
 
-import Nav from "./nav"
 import Seo from "./seo"
 import Content from "./content"
 import 'prismjs/plugins/line-numbers/prism-line-numbers.css';
@@ -20,21 +19,47 @@ let theme = createMuiTheme({
     type: 'light' // 'light'(default) or 'dark'
   },
   typography: {
+    fontSize: 16,
+    body1: {
+      fontSize: 14,
+    },
+    body2: {
+      fontSize: 16,
+    },
+    h1: {
+      fontSize: 48
+    },
+    h2: {
+      fontSize: 36
+    },
+    h3: {
+      fontSize: 24
+    },
+    h4: {
+      fontSize: 22
+    },
+    h5: {
+      fontSize: 20
+    },
+    h6: {
+      fontSize: 18
+    },
     button: {
       textTransform: "none"
     },
     fontFamily: [
-      'Noto Sans Japanese',
-      "游ゴシック体",
-      "Yu Gothic",
-      "YuGothic",
-      "ヒラギノ角ゴシック Pro",
-      "Hiragino Kaku Gothic Pro",
-      'メイリオ',
-      "Meiryo",
-      "Osaka",
-      "ＭＳ Ｐゴシック",
-      "MS PGothic",
+      '"M PLUS Rounded 1c"',
+      '"Noto Sans Japanese"',
+      '"游ゴシック体"',
+      '"Yu Gothic"',
+      'YuGothic',
+      '"ヒラギノ角ゴシック Pro"',
+      '"Hiragino Kaku Gothic Pro"',
+      '"メイリオ"',
+      'Meiryo',
+      'Osaka',
+      '"ＭＳ Ｐゴシック"',
+      '"MS PGothic"',
       'sans-serif',
     ].join(','),
   },

@@ -59,7 +59,7 @@ export default function ArticleCard({ article }: IProps) {
             title={article.node.title}
           />
           <CardContent>
-            <Typography gutterBottom variant="subtitle2" component="h3" className={classes.title}>
+            <Typography gutterBottom variant="subtitle2" className={classes.title}>
               {article.node.category ?
                 (
                   <Link to={`/categories/${article.node.category.id}`}>
@@ -68,10 +68,10 @@ export default function ArticleCard({ article }: IProps) {
                 )
                 : ("")}
             </Typography>
-            <Typography gutterBottom variant="h5" component="h2" className={classes.title}>
+            <Typography gutterBottom variant="h3" component="h2" className={classes.title}>
               {article.node.title}
             </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
+            <Typography variant="body1" color="textSecondary" component="p">
               {article.node.childMarkdownRemark.excerpt}
             </Typography>
           </CardContent>
