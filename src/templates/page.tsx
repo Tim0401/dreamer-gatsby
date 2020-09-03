@@ -1,6 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 
+// @ts-ignore
 import noimage from '../images/noimage.png';
 
 import Layout from "../components/layout"

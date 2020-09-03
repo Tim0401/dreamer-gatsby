@@ -17,12 +17,8 @@ import Hidden from '@material-ui/core/Hidden';
 import { Link, StaticQuery, graphql } from "gatsby"
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 import Slide from '@material-ui/core/Slide';
-import Grid from '@material-ui/core/Grid';
-import Button from '@material-ui/core/Button';
-import noimage from '../images/noimage.png';
 import PageContent from './page-content';
 import CategoryContent from './category-content';
-import SideBar from './sidebar'
 import Container from '@material-ui/core/Container';
 
 const drawerWidth = 240;

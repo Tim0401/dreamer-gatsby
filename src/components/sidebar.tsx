@@ -1,7 +1,6 @@
 import React from "react"
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
-import houkago from '../images/banner/houkago.jpg';
 import { Link, StaticQuery, graphql } from "gatsby"
 import { RawMarkdown } from "../components/raw-markdown";
 import { StrapiSidebarEdge } from "../../types/graphql-types"
