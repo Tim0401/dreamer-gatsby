@@ -63,17 +63,6 @@ module.exports = {
 		"gatsby-transformer-sharp",
 		"gatsby-plugin-sharp",
 		{
-			resolve: `gatsby-plugin-manifest`,
-			options: {
-				name: "gatsby-starter-default",
-				short_name: "starter",
-				start_url: "/",
-				background_color: "#663399",
-				theme_color: "#663399",
-				display: "minimal-ui",
-			},
-		},
-		{
 			resolve: `gatsby-plugin-canonical-urls`,
 			options: {
 				siteUrl: $siteUrl,
@@ -99,7 +88,6 @@ module.exports = {
 		},
 		"gatsby-plugin-material-ui",
 		"gatsby-plugin-styled-components",
-		`gatsby-plugin-sharp`,
 		"gatsby-plugin-catch-links",
 		'gatsby-plugin-robots-txt',
 		"gatsby-plugin-offline",
@@ -125,13 +113,7 @@ module.exports = {
 				language: "ja-jp",
 			},
 		},
-		{
-			resolve: `gatsby-transformer-remark`,
-			options: {
-				plugins: [
-					`gatsby-plugin-twitter`
-				],
-			},
-		}
+		`gatsby-plugin-twitter`,
+		`gatsby-transformer-remark`
 	],
 }
