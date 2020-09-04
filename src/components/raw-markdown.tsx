@@ -30,13 +30,11 @@ export const CodeBlock: FC<{ value: string, language: string }> = ({ value, lang
 
 export const FluidImage: FC<{ src: string, alt: string, fluidImages: any[] }> = ({ src, alt, fluidImages }) => {
 	const image = fluidImages.find(element => element.base === src);
-	console.log(image)
 	return <Img fluid={image.childImageSharp.fluid} alt={alt} style={{ maxWidth: image.childImageSharp.fluid.presentationWidth, maxHeight: image.childImageSharp.fluid.presentationHeight }} />
 }
 
 export const FixedImage: FC<{ src: string, alt: string, fixedImages: any[] }> = ({ src, alt, fixedImages }) => {
 	const image = fixedImages.find(element => element.base === src);
-	console.log(image)
 	return <Img fixed={image.childImageSharp.fixed} alt={alt} />
 }
 
