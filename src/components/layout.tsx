@@ -1,6 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { ThemeProvider, createMuiTheme, responsiveFontSizes, ListItemText } from "@material-ui/core";
+import { ThemeProvider as StyledThemeProvider } from "styled-components";
 import blue from '@material-ui/core/colors/blue';
 
 import Seo from "./seo"
@@ -84,8 +85,10 @@ theme = responsiveFontSizes(theme);
 const Layout = ({ children, title = "" }: IProps) => {
   return (
     <ThemeProvider theme={theme}>
-      <Seo lang="ja" title={title} />
-      <Content children={children} />
+      <StyledThemeProvider theme={theme}>
+        <Seo lang="ja" title={title} />
+        <Content children={children} />
+      </StyledThemeProvider>
     </ThemeProvider>
   )
 }

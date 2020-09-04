@@ -1,6 +1,7 @@
 import React, { FC } from "react"
 import ReactMarkdown from "react-markdown"
 import { Typography } from "@material-ui/core";
+import styled from "styled-components";
 
 import Img from "gatsby-image"
 // @ts-ignore
@@ -8,7 +9,16 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
 // @ts-ignore
 import style from "react-syntax-highlighter/dist/esm/styles/prism/solarizedlight"
 
-import AcUnitIcon from '@material-ui/icons/AcUnit';
+import AcUnitIcon from '@material-ui/icons/AcUnit'
+
+const Heading = styled(Typography)`
+	
+		display: flex;
+		align-items: center;
+		background-color: ${props => props.theme.palette.primary.main};
+		color: white;
+		padding: 10px;
+`;
 
 export const CodeBlock: FC<{ value: string, language: string }> = ({ value, language }) => {
 	return (
@@ -42,10 +52,10 @@ export const CustomHeading: FC<{ level: number, children: string }> = ({ level, 
 	if (level == 2) {
 		return (
 			// @ts-ignore
-			<Typography variant={h} style={{ display: "flex", alignItems: "center" }}>
+			<Heading variant={h}>
 				<AcUnitIcon style={{ marginRight: "0.25em" }} />
 				{children}
-			</Typography>
+			</Heading>
 		)
 	}
 	return (
