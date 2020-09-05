@@ -1,5 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
+import styled from "styled-components";
 
 // @ts-ignore
 import noimage from '../images/noimage.png';
@@ -24,6 +25,18 @@ interface IBProps {
 interface IProps {
   data: IBProps;
 }
+
+const Content = styled.div`
+
+h1, h2, h3, h4, h5, h6 {
+	margin: 0 0 20px 0 !important;
+}
+
+*+h1, *+h2, *+h3, *+h4, *+h5, *+h6 {
+    margin: 40px 0 20px 0 !important;
+}
+
+`;
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -87,14 +100,16 @@ const Page = ({ data }: IProps) => {
         </Box>
         <Divider />
         <Box mt={2}>
-          <Grid container spacing={1}>
-            <Grid item xs={12} md={8} lg={9}>
-              <RawMarkdown source={page.content} fluidImages={page.content_images} />
+          <Content>
+            <Grid container spacing={1}>
+              <Grid item xs={12} md={8} lg={9}>
+                <RawMarkdown source={page.content} fluidImages={page.content_images} />
+              </Grid>
+              <Grid item xs={12} md={4} lg={3}>
+                <SideBar />
+              </Grid>
             </Grid>
-            <Grid item xs={12} md={4} lg={3}>
-              <SideBar />
-            </Grid>
-          </Grid>
+          </Content>
         </Box>
       </Box>
     </Layout>
