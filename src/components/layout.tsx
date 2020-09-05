@@ -1,6 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { ThemeProvider, createMuiTheme, responsiveFontSizes, ListItemText } from "@material-ui/core";
+import { ThemeProvider, createMuiTheme, responsiveFontSizes, ListItemText, Box } from "@material-ui/core";
 import { ThemeProvider as StyledThemeProvider } from "styled-components";
 import blue from '@material-ui/core/colors/blue';
 
@@ -8,6 +8,7 @@ import Seo from "./seo"
 import Content from "./content"
 import 'prismjs/plugins/line-numbers/prism-line-numbers.css';
 import "../assets/css/main.scss"
+import FooterComponent from "./footer";
 
 interface IProps {
   children: React.ReactNode;
@@ -86,8 +87,11 @@ const Layout = ({ children, title = "" }: IProps) => {
   return (
     <ThemeProvider theme={theme}>
       <StyledThemeProvider theme={theme}>
-        <Seo lang="ja" title={title} />
-        <Content children={children} />
+        <Box style={{display: "flex", flexDirection: "column", minHeight: "100vh"}}>
+          <Seo lang="ja" title={title} />
+          <Content children={children} />
+          <FooterComponent />
+        </Box>
       </StyledThemeProvider>
     </ThemeProvider>
   )

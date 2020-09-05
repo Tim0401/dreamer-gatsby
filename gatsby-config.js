@@ -14,6 +14,8 @@ module.exports = {
 		concept: "We can draw freely!",
 		author: "akeno",
 		siteUrl: $siteUrl,
+		github: "https://github.com/Tim0401",
+		twitter: "https://twitter.com/akeno_0810"
 	},
 	plugins: [
 		{
