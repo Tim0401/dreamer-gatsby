@@ -14,13 +14,13 @@ import DoubleArrowIcon from '@material-ui/icons/DoubleArrow';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 
 const CatalogButton = styled(Button)`
-  float: right;
-  margin-top: 16px;
-  color: white;
-  background-color: ${props => props.theme.palette.primary.main};
+  float: right !important;
+  margin-top: 16px !important;
+  color: white !important;
+  background-color: ${props => props.theme.palette.primary.main} !important;
   &:hover {
-    color: white;
-    background-color: ${props => props.theme.palette.primary.dark};
+    color: white !important;
+    background-color: ${props => props.theme.palette.primary.dark} !important;
   }
 `;
 

@@ -9,11 +9,11 @@ import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 
 
 const PaginateButton = styled(Button)`
-  color: white;
-  background-color: ${props => props.theme.palette.primary.main};
+  color: white !important;
+  background-color: ${props => props.theme.palette.primary.main} !important;
   &:hover {
-    color: white;
-    background-color: ${props => props.theme.palette.primary.dark};
+    color: white !important;
+    background-color: ${props => props.theme.palette.primary.dark} !important;
   }
 `;
 
