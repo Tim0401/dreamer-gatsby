@@ -6,6 +6,7 @@
 
 // You can delete this file if you're not using it
 
+const { paginate } = require(`gatsby-awesome-pagination`);
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
 exports.createPages = async ({ graphql, actions }) => {
@@ -13,7 +14,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const result = await graphql(
     `
         {
-          articles: allStrapiArticle {
+          articles: allStrapiArticle (sort: {fields: published_at, order: DESC}) {
             edges {
               node {
                 strapiId
@@ -24,6 +25,9 @@ exports.createPages = async ({ graphql, actions }) => {
             edges {
               node {
                 strapiId
+                articles {
+                  id
+                }
               }
             }
           }
@@ -46,7 +50,9 @@ exports.createPages = async ({ graphql, actions }) => {
   const articles = result.data.articles.edges
   const categories = result.data.categories.edges
   const pages = result.data.pages.edges
+  const itemsPerPage = 12
 
+  // 記事個別ページ
   articles.forEach((article, index) => {
     createPage({
       path: `/articles/${article.node.strapiId}`,
@@ -57,16 +63,31 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 
+  // 記事一覧ページネーション
+  paginate({
+    createPage,
+    items: articles,
+    itemsPerPage: itemsPerPage,
+    component: require.resolve("./src/templates/index.tsx"),
+    pathPrefix: "/articleLists",
+  });
+
+  // カテゴリの記事一覧ページ
   categories.forEach((category, index) => {
-    createPage({
-      path: `/categories/${category.node.strapiId}`,
+    // カテゴリ記事一覧ページネーション
+    paginate({
+      createPage,
+      items: category.node.articles,
+      itemsPerPage: itemsPerPage,
       component: require.resolve("./src/templates/category.tsx"),
+      pathPrefix: `/categories/${category.node.strapiId}`,
       context: {
         id: category.node.strapiId,
       },
-    })
+    });
   })
 
+  // 単体ページ
   pages.forEach((page, index) => {
     createPage({
       path: `/pages/${page.node.strapiId}`,

@@ -1,6 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
-import { StrapiArticle, StrapiArticleEdge } from "../../types/graphql-types"
+import { StrapiArticleEdge } from "../../types/graphql-types"
 import noimage from '../images/noimage.png';
 import Card from '@material-ui/core/Card';
 import { makeStyles } from '@material-ui/core/styles';

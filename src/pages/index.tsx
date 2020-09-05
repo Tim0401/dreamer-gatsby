@@ -1,14 +1,28 @@
 import React from "react"
-import { StaticQuery, graphql } from "gatsby"
+import { StaticQuery, graphql, Link } from "gatsby"
+import styled from "styled-components";
 
 import Layout from "../components/layout"
 import ArticlesComponent from "../components/articles"
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import Box from '@material-ui/core/Box';
+import Button from '@material-ui/core/Button';
 import SideBar from '../components/sidebar'
 import Grid from '@material-ui/core/Grid';
+import DoubleArrowIcon from '@material-ui/icons/DoubleArrow';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
+
+const CatalogButton = styled(Button)`
+  float: right;
+  margin-top: 16px;
+  color: white;
+  background-color: ${props => props.theme.palette.primary.main};
+  &:hover {
+    color: white;
+    background-color: ${props => props.theme.palette.primary.dark};
+  }
+`;
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -35,7 +49,10 @@ const IndexPage = () => {
       <StaticQuery
         query={graphql`
         query {
-          allArticle(sort: {fields: published_at, order: DESC}) {
+          allArticle(
+            sort: {fields: published_at, order: DESC},
+            limit: 12
+            ) {
             edges {
               node {
                 strapiId
@@ -81,6 +98,9 @@ const IndexPage = () => {
               <Grid container spacing={1}>
                 <Grid item xs={12} sm={8} md={9}>
                   <ArticlesComponent articles={data.allArticle.edges} />
+                  <CatalogButton component={Link} to={'/articleLists'}>
+                    記事一覧<DoubleArrowIcon></DoubleArrowIcon>
+                  </CatalogButton>
                 </Grid>
                 <Grid item xs={12} sm={4} md={3}>
                   <SideBar />

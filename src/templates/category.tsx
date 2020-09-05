@@ -2,6 +2,7 @@ import React from "react"
 import { graphql } from "gatsby"
 
 import ArticlesComponent from "../components/articles"
+import { PaginateComponent } from "../components/paginate";
 import Layout from "../components/layout"
 import { StrapiCategory, StrapiArticleConnection } from "../../types/graphql-types"
 
@@ -22,8 +23,13 @@ interface IProps {
 }
 
 export const query = graphql`
-  query Category($id: String!) {
-    articles: allArticle(filter: { category: { id: { eq: $id } } }, sort: { fields: published_at, order: DESC }) {
+  query Category($id: String!, $skip: Int!, $limit: Int!) {
+    articles: allArticle(
+      filter: { category: { id: { eq: $id } } },
+      sort: { fields: published_at, order: DESC },
+      skip: $skip,
+      limit: $limit
+      ) {
       edges {
         node {
           strapiId
@@ -46,9 +52,9 @@ export const query = graphql`
       name
     }
   }
-`
+`;
 
-const Category = ({ data }: IProps) => {
+const Category = ({ data, pageContext }: IProps) => {
   const articles = data.articles.edges
   const category = data.category.name
 
@@ -63,6 +69,7 @@ const Category = ({ data }: IProps) => {
           <Grid container spacing={1}>
             <Grid item xs={12} sm={8} md={9}>
               <ArticlesComponent articles={articles} />
+              <PaginateComponent pageContext={pageContext} />
             </Grid>
             <Grid item xs={12} sm={4} md={3}>
               <SideBar />

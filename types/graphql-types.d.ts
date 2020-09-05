@@ -37,12 +37,12 @@ export type Article = Node & {
   createdAt?: Maybe<Scalars['Date']>;
   updatedAt?: Maybe<Scalars['Date']>;
   created_by?: Maybe<ArticleCreated_By>;
+  image?: Maybe<File>;
   updated_by?: Maybe<ArticleUpdated_By>;
   category?: Maybe<ArticleCategory>;
-  image?: Maybe<File>;
   tags?: Maybe<Array<Maybe<ArticleTags>>>;
-  content_images?: Maybe<Array<Maybe<File>>>;
   strapiId?: Maybe<Scalars['String']>;
+  content_images?: Maybe<Array<Maybe<File>>>;
   childMarkdownRemark?: Maybe<MarkdownRemark>;
 };
 
@@ -260,17 +260,6 @@ export type ArticleFieldsEnum =
   | 'created_by___createdAt'
   | 'created_by___updatedAt'
   | 'created_by___id'
-  | 'updated_by___firstname'
-  | 'updated_by___lastname'
-  | 'updated_by___createdAt'
-  | 'updated_by___updatedAt'
-  | 'updated_by___id'
-  | 'category___name'
-  | 'category___createdAt'
-  | 'category___updatedAt'
-  | 'category___created_by'
-  | 'category___updated_by'
-  | 'category___id'
   | 'image___sourceInstanceName'
   | 'image___absolutePath'
   | 'image___relativePath'
@@ -410,6 +399,17 @@ export type ArticleFieldsEnum =
   | 'image___internal___mediaType'
   | 'image___internal___owner'
   | 'image___internal___type'
+  | 'updated_by___firstname'
+  | 'updated_by___lastname'
+  | 'updated_by___createdAt'
+  | 'updated_by___updatedAt'
+  | 'updated_by___id'
+  | 'category___name'
+  | 'category___createdAt'
+  | 'category___updatedAt'
+  | 'category___created_by'
+  | 'category___updated_by'
+  | 'category___id'
   | 'tags'
   | 'tags___articles'
   | 'tags___name'
@@ -418,6 +418,7 @@ export type ArticleFieldsEnum =
   | 'tags___created_by'
   | 'tags___updated_by'
   | 'tags___id'
+  | 'strapiId'
   | 'content_images'
   | 'content_images___sourceInstanceName'
   | 'content_images___absolutePath'
@@ -558,7 +559,6 @@ export type ArticleFieldsEnum =
   | 'content_images___internal___mediaType'
   | 'content_images___internal___owner'
   | 'content_images___internal___type'
-  | 'strapiId'
   | 'childMarkdownRemark___id'
   | 'childMarkdownRemark___frontmatter___title'
   | 'childMarkdownRemark___excerpt'
@@ -624,12 +624,12 @@ export type ArticleFilterInput = {
   createdAt?: Maybe<DateQueryOperatorInput>;
   updatedAt?: Maybe<DateQueryOperatorInput>;
   created_by?: Maybe<ArticleCreated_ByFilterInput>;
+  image?: Maybe<FileFilterInput>;
   updated_by?: Maybe<ArticleUpdated_ByFilterInput>;
   category?: Maybe<ArticleCategoryFilterInput>;
-  image?: Maybe<FileFilterInput>;
   tags?: Maybe<ArticleTagsFilterListInput>;
-  content_images?: Maybe<FileFilterListInput>;
   strapiId?: Maybe<StringQueryOperatorInput>;
+  content_images?: Maybe<FileFilterListInput>;
   childMarkdownRemark?: Maybe<MarkdownRemarkFilterInput>;
 };
 
@@ -2457,8 +2457,6 @@ export type QueryAllSitePageArgs = {
 export type QuerySiteArgs = {
   buildTime?: Maybe<DateQueryOperatorInput>;
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
-  port?: Maybe<IntQueryOperatorInput>;
-  host?: Maybe<StringQueryOperatorInput>;
   polyfill?: Maybe<BooleanQueryOperatorInput>;
   pathPrefix?: Maybe<StringQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
@@ -2535,12 +2533,12 @@ export type QueryArticleArgs = {
   createdAt?: Maybe<DateQueryOperatorInput>;
   updatedAt?: Maybe<DateQueryOperatorInput>;
   created_by?: Maybe<ArticleCreated_ByFilterInput>;
+  image?: Maybe<FileFilterInput>;
   updated_by?: Maybe<ArticleUpdated_ByFilterInput>;
   category?: Maybe<ArticleCategoryFilterInput>;
-  image?: Maybe<FileFilterInput>;
   tags?: Maybe<ArticleTagsFilterListInput>;
-  content_images?: Maybe<FileFilterListInput>;
   strapiId?: Maybe<StringQueryOperatorInput>;
+  content_images?: Maybe<FileFilterListInput>;
   childMarkdownRemark?: Maybe<MarkdownRemarkFilterInput>;
 };
 
@@ -2635,12 +2633,12 @@ export type QueryStrapiArticleArgs = {
   createdAt?: Maybe<DateQueryOperatorInput>;
   updatedAt?: Maybe<DateQueryOperatorInput>;
   created_by?: Maybe<StrapiArticleCreated_ByFilterInput>;
+  image?: Maybe<FileFilterInput>;
   updated_by?: Maybe<StrapiArticleUpdated_ByFilterInput>;
   category?: Maybe<StrapiArticleCategoryFilterInput>;
-  image?: Maybe<FileFilterInput>;
   tags?: Maybe<StrapiArticleTagsFilterListInput>;
-  content_images?: Maybe<FileFilterListInput>;
   strapiId?: Maybe<StringQueryOperatorInput>;
+  content_images?: Maybe<FileFilterListInput>;
 };
 
 
@@ -2696,8 +2694,6 @@ export type QueryAllSitePluginArgs = {
 export type Site = Node & {
   buildTime?: Maybe<Scalars['Date']>;
   siteMetadata?: Maybe<SiteSiteMetadata>;
-  port?: Maybe<Scalars['Int']>;
-  host?: Maybe<Scalars['String']>;
   polyfill?: Maybe<Scalars['Boolean']>;
   pathPrefix?: Maybe<Scalars['String']>;
   id: Scalars['ID'];
@@ -2902,8 +2898,6 @@ export type SiteFieldsEnum =
   | 'siteMetadata___concept'
   | 'siteMetadata___author'
   | 'siteMetadata___siteUrl'
-  | 'port'
-  | 'host'
   | 'polyfill'
   | 'pathPrefix'
   | 'id'
@@ -2996,8 +2990,6 @@ export type SiteFieldsEnum =
 export type SiteFilterInput = {
   buildTime?: Maybe<DateQueryOperatorInput>;
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
-  port?: Maybe<IntQueryOperatorInput>;
-  host?: Maybe<StringQueryOperatorInput>;
   polyfill?: Maybe<BooleanQueryOperatorInput>;
   pathPrefix?: Maybe<StringQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
@@ -3055,10 +3047,24 @@ export type SitePageConnectionGroupArgs = {
 
 export type SitePageContext = {
   id?: Maybe<Scalars['String']>;
+  pageNumber?: Maybe<Scalars['Int']>;
+  humanPageNumber?: Maybe<Scalars['Int']>;
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+  numberOfPages?: Maybe<Scalars['Int']>;
+  previousPagePath?: Maybe<Scalars['String']>;
+  nextPagePath?: Maybe<Scalars['String']>;
 };
 
 export type SitePageContextFilterInput = {
   id?: Maybe<StringQueryOperatorInput>;
+  pageNumber?: Maybe<IntQueryOperatorInput>;
+  humanPageNumber?: Maybe<IntQueryOperatorInput>;
+  skip?: Maybe<IntQueryOperatorInput>;
+  limit?: Maybe<IntQueryOperatorInput>;
+  numberOfPages?: Maybe<IntQueryOperatorInput>;
+  previousPagePath?: Maybe<StringQueryOperatorInput>;
+  nextPagePath?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SitePageEdge = {
@@ -3161,6 +3167,13 @@ export type SitePageFieldsEnum =
   | 'internal___type'
   | 'isCreatedByStatefulCreatePages'
   | 'context___id'
+  | 'context___pageNumber'
+  | 'context___humanPageNumber'
+  | 'context___skip'
+  | 'context___limit'
+  | 'context___numberOfPages'
+  | 'context___previousPagePath'
+  | 'context___nextPagePath'
   | 'pluginCreator___id'
   | 'pluginCreator___parent___id'
   | 'pluginCreator___parent___parent___id'
@@ -3206,9 +3219,6 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___pluginOptions___head'
   | 'pluginCreator___pluginOptions___name'
   | 'pluginCreator___pluginOptions___path'
-  | 'pluginCreator___pluginOptions___apiURL'
-  | 'pluginCreator___pluginOptions___contentTypes'
-  | 'pluginCreator___pluginOptions___queryLimit'
   | 'pluginCreator___pluginOptions___fileName'
   | 'pluginCreator___pluginOptions___siteUrl'
   | 'pluginCreator___pluginOptions___short_name'
@@ -3231,6 +3241,9 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___pluginOptions___xfbml'
   | 'pluginCreator___pluginOptions___language'
   | 'pluginCreator___pluginOptions___pathCheck'
+  | 'pluginCreator___pluginOptions___apiURL'
+  | 'pluginCreator___pluginOptions___contentTypes'
+  | 'pluginCreator___pluginOptions___queryLimit'
   | 'pluginCreator___nodeAPIs'
   | 'pluginCreator___browserAPIs'
   | 'pluginCreator___ssrAPIs'
@@ -3421,12 +3434,6 @@ export type SitePluginFieldsEnum =
   | 'pluginOptions___head'
   | 'pluginOptions___name'
   | 'pluginOptions___path'
-  | 'pluginOptions___apiURL'
-  | 'pluginOptions___contentTypes'
-  | 'pluginOptions___queryLimit'
-  | 'pluginOptions___markdownImages___typesToParse___article'
-  | 'pluginOptions___markdownImages___typesToParse___page'
-  | 'pluginOptions___markdownImages___typesToParse___sidebar'
   | 'pluginOptions___fileName'
   | 'pluginOptions___siteUrl'
   | 'pluginOptions___short_name'
@@ -3449,6 +3456,12 @@ export type SitePluginFieldsEnum =
   | 'pluginOptions___xfbml'
   | 'pluginOptions___language'
   | 'pluginOptions___pathCheck'
+  | 'pluginOptions___apiURL'
+  | 'pluginOptions___contentTypes'
+  | 'pluginOptions___queryLimit'
+  | 'pluginOptions___markdownImages___typesToParse___article'
+  | 'pluginOptions___markdownImages___typesToParse___page'
+  | 'pluginOptions___markdownImages___typesToParse___sidebar'
   | 'nodeAPIs'
   | 'browserAPIs'
   | 'ssrAPIs'
@@ -3565,10 +3578,6 @@ export type SitePluginPluginOptions = {
   head?: Maybe<Scalars['Boolean']>;
   name?: Maybe<Scalars['String']>;
   path?: Maybe<Scalars['String']>;
-  apiURL?: Maybe<Scalars['String']>;
-  contentTypes?: Maybe<Array<Maybe<Scalars['String']>>>;
-  queryLimit?: Maybe<Scalars['Int']>;
-  markdownImages?: Maybe<SitePluginPluginOptionsMarkdownImages>;
   fileName?: Maybe<Scalars['String']>;
   siteUrl?: Maybe<Scalars['String']>;
   short_name?: Maybe<Scalars['String']>;
@@ -3591,6 +3600,10 @@ export type SitePluginPluginOptions = {
   xfbml?: Maybe<Scalars['Boolean']>;
   language?: Maybe<Scalars['String']>;
   pathCheck?: Maybe<Scalars['Boolean']>;
+  apiURL?: Maybe<Scalars['String']>;
+  contentTypes?: Maybe<Array<Maybe<Scalars['String']>>>;
+  queryLimit?: Maybe<Scalars['Int']>;
+  markdownImages?: Maybe<SitePluginPluginOptionsMarkdownImages>;
 };
 
 export type SitePluginPluginOptionsFilterInput = {
@@ -3598,10 +3611,6 @@ export type SitePluginPluginOptionsFilterInput = {
   head?: Maybe<BooleanQueryOperatorInput>;
   name?: Maybe<StringQueryOperatorInput>;
   path?: Maybe<StringQueryOperatorInput>;
-  apiURL?: Maybe<StringQueryOperatorInput>;
-  contentTypes?: Maybe<StringQueryOperatorInput>;
-  queryLimit?: Maybe<IntQueryOperatorInput>;
-  markdownImages?: Maybe<SitePluginPluginOptionsMarkdownImagesFilterInput>;
   fileName?: Maybe<StringQueryOperatorInput>;
   siteUrl?: Maybe<StringQueryOperatorInput>;
   short_name?: Maybe<StringQueryOperatorInput>;
@@ -3624,6 +3633,10 @@ export type SitePluginPluginOptionsFilterInput = {
   xfbml?: Maybe<BooleanQueryOperatorInput>;
   language?: Maybe<StringQueryOperatorInput>;
   pathCheck?: Maybe<BooleanQueryOperatorInput>;
+  apiURL?: Maybe<StringQueryOperatorInput>;
+  contentTypes?: Maybe<StringQueryOperatorInput>;
+  queryLimit?: Maybe<IntQueryOperatorInput>;
+  markdownImages?: Maybe<SitePluginPluginOptionsMarkdownImagesFilterInput>;
 };
 
 export type SitePluginPluginOptionsMarkdownImages = {
@@ -3687,12 +3700,12 @@ export type StrapiArticle = Node & {
   createdAt?: Maybe<Scalars['Date']>;
   updatedAt?: Maybe<Scalars['Date']>;
   created_by?: Maybe<StrapiArticleCreated_By>;
+  image?: Maybe<File>;
   updated_by?: Maybe<StrapiArticleUpdated_By>;
   category?: Maybe<StrapiArticleCategory>;
-  image?: Maybe<File>;
   tags?: Maybe<Array<Maybe<StrapiArticleTags>>>;
-  content_images?: Maybe<Array<Maybe<File>>>;
   strapiId?: Maybe<Scalars['String']>;
+  content_images?: Maybe<Array<Maybe<File>>>;
 };
 
 
@@ -3909,17 +3922,6 @@ export type StrapiArticleFieldsEnum =
   | 'created_by___createdAt'
   | 'created_by___updatedAt'
   | 'created_by___id'
-  | 'updated_by___firstname'
-  | 'updated_by___lastname'
-  | 'updated_by___createdAt'
-  | 'updated_by___updatedAt'
-  | 'updated_by___id'
-  | 'category___name'
-  | 'category___createdAt'
-  | 'category___updatedAt'
-  | 'category___created_by'
-  | 'category___updated_by'
-  | 'category___id'
   | 'image___sourceInstanceName'
   | 'image___absolutePath'
   | 'image___relativePath'
@@ -4059,6 +4061,17 @@ export type StrapiArticleFieldsEnum =
   | 'image___internal___mediaType'
   | 'image___internal___owner'
   | 'image___internal___type'
+  | 'updated_by___firstname'
+  | 'updated_by___lastname'
+  | 'updated_by___createdAt'
+  | 'updated_by___updatedAt'
+  | 'updated_by___id'
+  | 'category___name'
+  | 'category___createdAt'
+  | 'category___updatedAt'
+  | 'category___created_by'
+  | 'category___updated_by'
+  | 'category___id'
   | 'tags'
   | 'tags___articles'
   | 'tags___name'
@@ -4067,6 +4080,7 @@ export type StrapiArticleFieldsEnum =
   | 'tags___created_by'
   | 'tags___updated_by'
   | 'tags___id'
+  | 'strapiId'
   | 'content_images'
   | 'content_images___sourceInstanceName'
   | 'content_images___absolutePath'
@@ -4206,8 +4220,7 @@ export type StrapiArticleFieldsEnum =
   | 'content_images___internal___ignoreType'
   | 'content_images___internal___mediaType'
   | 'content_images___internal___owner'
-  | 'content_images___internal___type'
-  | 'strapiId';
+  | 'content_images___internal___type';
 
 export type StrapiArticleFilterInput = {
   id?: Maybe<StringQueryOperatorInput>;
@@ -4220,12 +4233,12 @@ export type StrapiArticleFilterInput = {
   createdAt?: Maybe<DateQueryOperatorInput>;
   updatedAt?: Maybe<DateQueryOperatorInput>;
   created_by?: Maybe<StrapiArticleCreated_ByFilterInput>;
+  image?: Maybe<FileFilterInput>;
   updated_by?: Maybe<StrapiArticleUpdated_ByFilterInput>;
   category?: Maybe<StrapiArticleCategoryFilterInput>;
-  image?: Maybe<FileFilterInput>;
   tags?: Maybe<StrapiArticleTagsFilterListInput>;
-  content_images?: Maybe<FileFilterListInput>;
   strapiId?: Maybe<StringQueryOperatorInput>;
+  content_images?: Maybe<FileFilterListInput>;
 };
 
 export type StrapiArticleGroupConnection = {
@@ -4351,9 +4364,9 @@ export type StrapiCategoryArticles = {
   createdAt?: Maybe<Scalars['Date']>;
   updatedAt?: Maybe<Scalars['Date']>;
   created_by?: Maybe<Scalars['String']>;
+  image?: Maybe<File>;
   updated_by?: Maybe<Scalars['String']>;
   category?: Maybe<Scalars['String']>;
-  image?: Maybe<File>;
   id?: Maybe<Scalars['String']>;
 };
 
@@ -4388,9 +4401,9 @@ export type StrapiCategoryArticlesFilterInput = {
   createdAt?: Maybe<DateQueryOperatorInput>;
   updatedAt?: Maybe<DateQueryOperatorInput>;
   created_by?: Maybe<StringQueryOperatorInput>;
+  image?: Maybe<FileFilterInput>;
   updated_by?: Maybe<StringQueryOperatorInput>;
   category?: Maybe<StringQueryOperatorInput>;
-  image?: Maybe<FileFilterInput>;
   id?: Maybe<StringQueryOperatorInput>;
 };
 
@@ -4564,8 +4577,6 @@ export type StrapiCategoryFieldsEnum =
   | 'articles___createdAt'
   | 'articles___updatedAt'
   | 'articles___created_by'
-  | 'articles___updated_by'
-  | 'articles___category'
   | 'articles___image___sourceInstanceName'
   | 'articles___image___absolutePath'
   | 'articles___image___relativePath'
@@ -4616,6 +4627,8 @@ export type StrapiCategoryFieldsEnum =
   | 'articles___image___internal___mediaType'
   | 'articles___image___internal___owner'
   | 'articles___image___internal___type'
+  | 'articles___updated_by'
+  | 'articles___category'
   | 'articles___id'
   | 'strapiId';
 
@@ -5668,6 +5681,8 @@ export type ArticleQueryQuery = { article?: Maybe<(
 
 export type CategoryQueryVariables = Exact<{
   id: Scalars['String'];
+  skip: Scalars['Int'];
+  limit: Scalars['Int'];
 }>;
 
 
@@ -5675,6 +5690,17 @@ export type CategoryQuery = { articles: { edges: Array<{ node: (
         Pick<Article, 'strapiId' | 'title' | 'published_at'>
         & { category?: Maybe<Pick<ArticleCategory, 'id' | 'name'>>, childMarkdownRemark?: Maybe<Pick<MarkdownRemark, 'excerpt'>>, image?: Maybe<Pick<File, 'publicURL'>> }
       ) }> }, category?: Maybe<Pick<StrapiCategory, 'name'>> };
+
+export type Unnamed_7_QueryVariables = Exact<{
+  skip: Scalars['Int'];
+  limit: Scalars['Int'];
+}>;
+
+
+export type Unnamed_7_Query = { allArticle: { edges: Array<{ node: (
+        Pick<Article, 'strapiId' | 'title' | 'published_at'>
+        & { category?: Maybe<Pick<ArticleCategory, 'id' | 'name'>>, image?: Maybe<Pick<File, 'publicURL'>>, childMarkdownRemark?: Maybe<Pick<MarkdownRemark, 'excerpt'>> }
+      ) }> }, site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'title' | 'description' | 'concept'>> }> };
 
 export type PageQueryQueryVariables = Exact<{
   id: Scalars['String'];
