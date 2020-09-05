@@ -26,7 +26,7 @@ const ProfileLink = styled.a`
 `;
 
 const Copyright = styled(Typography)`
-	margin-right: 10px;
+	margin-right: 10px !important;
 	color: white;
 `;
 
