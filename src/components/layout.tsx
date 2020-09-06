@@ -14,6 +14,20 @@ interface IProps {
   children: React.ReactNode;
   title: string | undefined | null;
 }
+const fonts = [
+'"Noto Sans Japanese"',
+'"游ゴシック体"',
+'"Yu Gothic"',
+'YuGothic',
+'"ヒラギノ角ゴシック Pro"',
+'"Hiragino Kaku Gothic Pro"',
+'"メイリオ"',
+'Meiryo',
+'Osaka',
+'"ＭＳ Ｐゴシック"',
+'"MS PGothic"',
+'sans-serif',
+];
 
 let theme = createMuiTheme({
   //テーマの定義
@@ -29,16 +43,28 @@ let theme = createMuiTheme({
       fontSize: 16,
     },
     h1: {
-      fontSize: 48
+      fontSize: 48,
+      fontFamily: [
+        '"M PLUS Rounded 1c"',
+      ].concat(fonts).join(','),
     },
     h2: {
-      fontSize: 36
+      fontSize: 36,
+      fontFamily: [
+        '"M PLUS Rounded 1c"',
+      ].concat(fonts).join(','),
     },
     h3: {
-      fontSize: 24
+      fontSize: 24,
+      fontFamily: [
+        '"M PLUS Rounded 1c"',
+      ].concat(fonts).join(','),
     },
     h4: {
-      fontSize: 22
+      fontSize: 22,
+      fontFamily: [
+        '"M PLUS Rounded 1c"',
+      ].concat(fonts).join(','),
     },
     h5: {
       fontSize: 20
@@ -49,21 +75,7 @@ let theme = createMuiTheme({
     button: {
       textTransform: "none"
     },
-    fontFamily: [
-      '"M PLUS Rounded 1c"',
-      '"Noto Sans Japanese"',
-      '"游ゴシック体"',
-      '"Yu Gothic"',
-      'YuGothic',
-      '"ヒラギノ角ゴシック Pro"',
-      '"Hiragino Kaku Gothic Pro"',
-      '"メイリオ"',
-      'Meiryo',
-      'Osaka',
-      '"ＭＳ Ｐゴシック"',
-      '"MS PGothic"',
-      'sans-serif',
-    ].join(','),
+    fontFamily: fonts.join(','),
   },
   props: {
     MuiTextField: {

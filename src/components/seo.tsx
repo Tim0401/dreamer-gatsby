@@ -80,10 +80,6 @@ function SEO({ description, lang, meta, title }: IProps) {
       link={[
         {
           rel: "stylesheet",
-          href: "https://fonts.googleapis.com/css?family=Staatliches",
-        },
-        {
-          rel: "stylesheet",
           href:
             "https://cdn.jsdelivr.net/npm/uikit@3.2.3/dist/css/uikit.min.css",
         },
