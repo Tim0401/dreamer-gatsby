@@ -31,7 +31,7 @@ jobs:
     - name: Build Gatsby
       run: yarn build
       env:
-        API_URL: "http://akeno.mydns.jp:8383"
+        API_URL: ${{ secrets.API_URL }}
 
     - name: Setup Firebase CLI
       run: npm install -g firebase-tools
