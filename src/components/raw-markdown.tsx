@@ -86,10 +86,8 @@ const CustomHeading: FC<{ level: number, children: string }> = ({ level, childre
 		</Typography>
 	)
 }
-const ShortCodeRenderer = ({ identifier, attributes }) => {
+const ShortCodeRenderer: FC<{ identifier: string, attributes: { [key: string]: string; } }> = ({ identifier, attributes }) => {
 	const classes = useStyles();
-	console.log(identifier)
-	console.log(attributes)
 	if (identifier.toLowerCase() == "youtube") {
 		const src = "https://www.youtube.com/embed/" + attributes.id + "?origin=http://dreamer.cyou";
 		return (
@@ -99,6 +97,7 @@ const ShortCodeRenderer = ({ identifier, attributes }) => {
 			</div >
 		);
 	}
+	return (<div></div>)
 };
 
 interface IProps {
