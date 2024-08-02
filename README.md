@@ -6,7 +6,7 @@ Gatsbyをベースに機能追加中。
 
 ## 運用中
 
-https://ak/  
+https://ak41.net
 
 ## 構築ログ
 https://ak41.net/pages/5f5dd4925f91a4001cb4dc29  
